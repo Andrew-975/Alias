@@ -37,7 +37,7 @@ public class SettingsActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    public void onClickSettings(View view) {
+    public void onClickSettingsToMain(View view) {
         Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
         startActivity(intent);
     }

@@ -37,7 +37,7 @@ public class AboutActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    public void onClickAbout(View view) {
+    public void onClickAboutToMain(View view) {
         Intent intent = new Intent(AboutActivity.this, MainActivity.class);
         startActivity(intent);
     }

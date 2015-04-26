@@ -24,7 +24,9 @@
         android:background="@drawable/drawable"
         android:layout_alignTop="@+id/about_text"
         android:layout_toLeftOf="@+id/about_text"
-        android:layout_toStartOf="@+id/about_text" />
+        android:layout_toStartOf="@+id/about_text"
+        android:clickable="true"
+        android:onClick="onClickAboutToMain" />
 
     <TextView
         android:layout_width="wrap_content"

@@ -1,6 +1,7 @@
 package com.example.andrew_975.alias;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
@@ -12,44 +13,49 @@ import android.widget.ListView;
 import android.widget.EditText;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.view.View.OnKeyListener;
 import android.util.Log;
+import android.widget.Toast;
+import android.widget.TextView;
+
 
 
 
 
 public class DictionaryActivity extends ActionBarActivity {
 
+    ArrayList<String> dicts = new ArrayList(Arrays.asList("Science", "Art", "My Dictionary 1", "My Dictionary 2", "My Dictionary 3"));
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dictionary);
-
         ListView list = (ListView) findViewById(R.id.listView);
-        final String[] dictArray = {"Science", "Art", "My Dictionary 1", "My Dictionary 2", "My Dictionary 3"};
-
         final EditText edit = (EditText) findViewById(R.id.editText);
-
-        final ArrayList<String> dicts = new ArrayList<String>();
-        for (int i = 0; i < dictArray.length; i++) {
-            dicts.add(dictArray[i]);
-        }
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, dicts);
         list.setAdapter(adapter);
         edit.setOnKeyListener(new OnKeyListener() {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                // TODO Auto-generated method stub
                 Log.d("myLogs", "here");
                 if (event.getAction() == KeyEvent.ACTION_DOWN)
-                if (keyCode == KeyEvent.KEYCODE_0) { //enter
-                    dicts.add(0, edit.getText().toString());
-                    adapter.notifyDataSetChanged();
-                    edit.setText("");
-                    Log.d("myLogs", "do");
-                    return true;
-                }
+                    if (keyCode == KeyEvent.KEYCODE_0) {
+                        dicts.add(0, edit.getText().toString());
+                        adapter.notifyDataSetChanged();
+                        edit.setText("");
+                        Log.d("myLogs", "do");
+                        return true;
+                    }
                 Log.d("myLogs", "not");
                 return true;
+            }
+        });
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View itemClicked, int position,
+                                    long id) {
+                Toast.makeText(getApplicationContext(), ((TextView) itemClicked).getText(),
+                        Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -81,58 +87,43 @@ public class DictionaryActivity extends ActionBarActivity {
         startActivity(intent);
     }
     public void onClickEdit(View view) {
+        ListView list = (ListView) findViewById(R.id.listView);
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View itemClicked, int position,
+                                    long id) {
+                TextView textView = (TextView) itemClicked;
+                String strText = textView.getText().toString(); // получаем текст нажатого элемента
+
+                //if(strText.equalsIgnoreCase(getResources().getString(R.string.name1))) {
+                // Запускаем активность, связанную с определенным именем кота
+                //Intent intent = new Intent(DictionaryActivity.this, EditActivity.class);
+                //startActivity(intent);
+                //}
+            }
+        });
         Intent intent = new Intent(DictionaryActivity.this, EditActivity.class);
         startActivity(intent);
     }
 
+    public void onClickDelete(View view) {
+
+        ArrayAdapter<String> adapterlist = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, dicts);
+        ListView list = (ListView) findViewById(R.id.listView);
+        list.setTextFilterEnabled(true);
+        list.setAdapter(adapterlist);
+        adapterlist.notifyDataSetChanged();
+        dicts.remove(0);
+        adapterlist.notifyDataSetChanged();
+
+
+    }
+
+    public void onClickImport(View view) {
+
+    }
 }
-
-
-
-   /* ListView lv;
-    ArrayList<String> data;
-
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        data = new ArrayList<String>();
-        for (int i = 1; i < dictArray.length; i++) {
-            data.add(dictArray[i]);
-        }
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, data);
-
-        lv = (ListView) findViewById(R.id.listView);
-        lv.setAdapter(adapter);
-    }
-
-    public void onAddButtonClick(View v) {
-        data.add("kokoko");
-
-    }
-
-    @Override
-    public boolean onDeleteButtonClick() {
-        lvSimple.setOnItemClickListener(new OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                int pos = position;
-            }
-        });
-
-        if (item.getItemId() == CM_DELETE_ID) {
-            // �������� ���� � ������ ������
-            AdapterContextMenuInfo acmi = (AdapterContextMenuInfo) item.getMenuInfo();
-            // ������� Map �� ���������, ��������� ������� ������ � ������
-            data.remove(acmi.position);
-            // ����������, ��� ������ ����������
-            sAdapter.notifyDataSetChanged();
-            return true;
-        }
-        return super.onContextItemSelected(item);
-    }*/
 
 
 

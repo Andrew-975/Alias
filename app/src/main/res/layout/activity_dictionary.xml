@@ -24,7 +24,7 @@
         android:text="Импортировать из файла"
         android:id="@+id/button"
         android:textSize="17dp"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/deleteButton"
         android:layout_centerHorizontal="true" />
 
     <ImageButton
@@ -68,16 +68,28 @@
         android:clickable="true"
         android:layout_alignTop="@+id/editButton"
         android:layout_alignRight="@+id/dict"
-        android:layout_alignEnd="@+id/dict" />
+        android:layout_alignEnd="@+id/dict"
+        android:onClick="onClickDelete" />
 
     <EditText
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:id="@+id/editText"
         android:textSize="22dp"
-        android:layout_above="@+id/button"
+        android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/deleteButton"
         android:layout_alignEnd="@+id/deleteButton" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Добавить словарь:"
+        android:id="@+id/textView9"
+        android:layout_below="@+id/button"
+        android:layout_alignRight="@+id/editText"
+        android:layout_alignEnd="@+id/editText"
+        android:layout_marginTop="65dp"/>
 
 
 </RelativeLayout>

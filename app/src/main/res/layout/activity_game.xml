@@ -31,11 +31,10 @@
         android:layout_height="wrap_content"
         android:text="Настроить команды"
         android:id="@+id/button"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="41dp"
         android:textSize="20dp"
         android:layout_below="@+id/game"
-        android:layout_toRightOf="@+id/backGame"
-        android:layout_toEndOf="@+id/backGame" />
+        android:layout_centerHorizontal="true" />
 
     <Spinner
         android:layout_width="wrap_content"
@@ -52,8 +51,8 @@
         android:text="Длительность раунда:"
         android:id="@+id/raund"
         android:layout_below="@+id/spinner"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="64dp" />
+        android:layout_toRightOf="@+id/backGame"
+        android:layout_toEndOf="@+id/backGame" />
 
     <TextView
         android:layout_width="wrap_content"

@@ -1,0 +1,72 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.example.andrew_975.alias.EditActivity"
+    android:id="@+id/edits">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Штаны"
+        android:id="@+id/textView3"
+        android:textSize="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/backBut"
+        android:background="@drawable/drawable"
+        android:onClick="onClickBackToDict"
+        android:layout_alignBottom="@+id/textView3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextDel"
+        android:textSize="22dp"
+        android:layout_below="@+id/imageButton"
+        android:layout_alignLeft="@+id/editTextAdd"
+        android:layout_alignStart="@+id/editTextAdd"
+        android:layout_marginTop="106dp" />
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextAdd"
+        android:textSize="22dp"
+        android:layout_below="@+id/textView3"
+        android:layout_toLeftOf="@+id/imageButton"
+        android:layout_toStartOf="@+id/imageButton"
+        android:layout_marginTop="110dp" />
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/deleteBut"
+        android:background="@drawable/delete"
+        android:clickable="true"
+        android:layout_alignBottom="@+id/editTextDel"
+        android:layout_alignLeft="@+id/imageButton"
+        android:layout_alignStart="@+id/imageButton"
+        android:onClick="onClickDel" />
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/imageButton"
+        android:clickable="true"
+        android:background="@drawable/ok"
+        android:layout_alignTop="@+id/editTextAdd"
+        android:layout_toRightOf="@+id/textView3"
+        android:layout_toEndOf="@+id/textView3"
+        android:onClick="onClickOk" />
+
+</RelativeLayout>

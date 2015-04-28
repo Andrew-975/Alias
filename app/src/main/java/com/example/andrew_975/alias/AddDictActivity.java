@@ -1,68 +1,51 @@
 package com.example.andrew_975.alias;
 
-import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 
 
 public class AddDictActivity extends ActionBarActivity {
 
-    ArrayList<String> words = new ArrayList(Arrays.asList("My Pants", "Shorts", "Pantalony", "Retuses", "Kobinatsiya"));
-    float historicX = Float.NaN, historicY = Float.NaN;
-    static final int DELTA = 50;
-    //enum Direction {LEFT, RIGHT;}
+    //ArrayList<String> words = new ArrayList(Arrays.asList("My Pants", "Shorts", "Pantalony", "Retuses", "Kobinatsiya"));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_dict);
-        ListView list1 = (ListView) findViewById(R.id.editList);
-        final EditText edit1 = (EditText) findViewById(R.id.editTextAdd);
+
+        Resources res = getResources();
+        final ArrayList<String> words = new ArrayList<String>();
+        Collections.addAll(words, res.getStringArray(R.array.words));
+        final ListView list1 = (ListView) findViewById(R.id.editList);
+        final EditText edit1 = (EditText) findViewById(R.id.editTextDel);
         final ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, words);
         list1.setAdapter(adapter1);
-
-        list1.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
+        edit1.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
                 // TODO Auto-generated method stub
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        historicX = event.getX();
-                        historicY = event.getY();
-                        break;
-
-                    case MotionEvent.ACTION_UP:
-                        if (event.getX() - historicX < -DELTA) {
-
-
-                            return true;
-                        } else if (event.getX() - historicX > DELTA) {
-                            //FunctionDeleteRowWhenSlidingRight();
-                            return true;
-                        }
-                        break;
-                    default:
-                        return false;
-                }
+                if (event.getAction() == KeyEvent.ACTION_DOWN)
+                    if (keyCode == KeyEvent.KEYCODE_0) {
+                        words.add(0, edit1.getText().toString());
+                        adapter1.notifyDataSetChanged();
+                        edit1.setText("");
+                        return true;
+                    }
                 return false;
             }
         });
+
     }
 
     /*public View getView(final int position, View convertView, ViewGroup parent, Context context, ListView list) {
@@ -113,6 +96,9 @@ public class AddDictActivity extends ActionBarActivity {
     }
 
     public void onClickDelete(View view) {
+        Resources res = getResources();
+        ArrayList<String> words = new ArrayList<String>();
+        Collections.addAll(words, res.getStringArray(R.array.add_dictionaries));
         ArrayAdapter<String> adapterlist = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, words);
         ListView list = (ListView) findViewById(R.id.editList);

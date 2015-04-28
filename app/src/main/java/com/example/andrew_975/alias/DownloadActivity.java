@@ -1,6 +1,7 @@
 package com.example.andrew_975.alias;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,6 +14,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -24,6 +26,9 @@ public class DownloadActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_download);
+        Resources res = getResources();
+        ArrayList<String> di = new ArrayList<String>();
+        Collections.addAll(di, res.getStringArray(R.array.add_dictionaries));
         ListView listDwn = (ListView) findViewById(R.id.downloadList);
         final ArrayAdapter<String> adapterDwn = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, di);
         listDwn.setAdapter(adapterDwn);

@@ -2,15 +2,15 @@ package com.example.andrew_975.alias;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
+import android.util.Log;
 import android.view.MenuItem;
-import android.view.MotionEvent;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.view.View;
 import android.widget.AdapterView;
@@ -18,12 +18,18 @@ import android.widget.TextView;
 
 public class DictionaryActivity extends ActionBarActivity {
 
-    ArrayList<String> dicts = new ArrayList(Arrays.asList("Наука", "The Lord Of Rings", "Наша группа", "Что происходит", "Kolbaster"));
-            //Arrays.asList(getResources().getStringArray(R.array.dictionaries));
+    //String[] dict = getResources().getStringArray(R.array.dictionaries);
+    //ArrayList<String> dicts = new ArrayList(Arrays.asList( "The Game of Thrones", "Selechi", "Memesy"));
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dictionary);
+
+        Resources res = getResources();
+        ArrayList<String> dicts = new ArrayList<String>();
+        Collections.addAll(dicts, res.getStringArray(R.array.dictionaries));
+
         MyAdapter adapter = new MyAdapter(dicts, this);
         ListView list = (ListView) findViewById(R.id.listView);
         //final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, dicts);
@@ -38,12 +44,8 @@ public class DictionaryActivity extends ActionBarActivity {
             }
         });*/
     }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_dictionary, menu);
-        return true;
-    }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -68,12 +70,6 @@ public class DictionaryActivity extends ActionBarActivity {
                                     long id) {
                 TextView textView = (TextView) itemClicked;
                 String strText = textView.getText().toString(); // получаем текст нажатого элемента
-
-                //if(strText.equalsIgnoreCase(getResources().getString(R.string.name1))) {
-                // Запускаем активность, связанную с определенным именем кота
-                //Intent intent = new Intent(DictionaryActivity.this, EditActivity.class);
-                //startActivity(intent);
-                //}
             }
         });
         Intent intent = new Intent(DictionaryActivity.this, AddDictActivity.class);

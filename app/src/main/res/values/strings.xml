@@ -10,11 +10,25 @@
     <string name="title_activity_add_dict">AddDictActivity</string>
 
     <string-array name="dictionaries">
-        <item>Наука</item>
+        <item>Штаны</item>
         <item>Живопись</item>
         <item>Колбастер</item>
         <item>Сосистер</item>
         <item>Мой словарь 1</item>
+    </string-array>
+    <string-array name="add_dictionaries">
+        <item>Игра престолов</item>
+        <item>Наша группа</item>
+        <item>Лейкопластырь</item>
+    </string-array>
+    <string-array name="words">
+        <item>Термоядерный синтез</item>
+        <item>Британские ученые</item>
+        <item>Три-метил-бутан</item>
+        <item>Большой взрыв</item>
+        <item>Популярная механика</item>
+        <item>Эйнштейн</item>
+        <item>Сингулярность</item>
     </string-array>
     <string-array name="teams">
             <item>Выбрать словарь:</item>

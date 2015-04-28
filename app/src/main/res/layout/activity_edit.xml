@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Наука"
+        android:text="Штаны"
         android:id="@+id/textView3"
         android:textSize="50dp"
         android:layout_alignParentTop="true"
@@ -30,17 +30,17 @@
     <EditText
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:id="@+id/editTextAdd"
+        android:id="@+id/editTextDel"
         android:textSize="22dp"
         android:layout_below="@+id/imageButton"
-        android:layout_alignLeft="@+id/editTextDelete"
-        android:layout_alignStart="@+id/editTextDelete"
+        android:layout_alignLeft="@+id/editTextAdd"
+        android:layout_alignStart="@+id/editTextAdd"
         android:layout_marginTop="106dp" />
 
     <EditText
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:id="@+id/editTextDelete"
+        android:id="@+id/editTextAdd"
         android:textSize="22dp"
         android:layout_below="@+id/textView3"
         android:layout_toLeftOf="@+id/imageButton"
@@ -53,9 +53,10 @@
         android:id="@+id/deleteBut"
         android:background="@drawable/delete"
         android:clickable="true"
-        android:layout_alignBottom="@+id/editTextAdd"
+        android:layout_alignBottom="@+id/editTextDel"
         android:layout_alignLeft="@+id/imageButton"
-        android:layout_alignStart="@+id/imageButton" />
+        android:layout_alignStart="@+id/imageButton"
+        android:onClick="onClickDel" />
 
     <ImageButton
         android:layout_width="50dp"
@@ -63,8 +64,9 @@
         android:id="@+id/imageButton"
         android:clickable="true"
         android:background="@drawable/ok"
-        android:layout_alignTop="@+id/editTextDelete"
+        android:layout_alignTop="@+id/editTextAdd"
         android:layout_toRightOf="@+id/textView3"
-        android:layout_toEndOf="@+id/textView3" />
+        android:layout_toEndOf="@+id/textView3"
+        android:onClick="onClickOk" />
 
 </RelativeLayout>

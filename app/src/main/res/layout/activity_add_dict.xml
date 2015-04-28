@@ -5,12 +5,13 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.example.andrew_975.alias.AddDictActivity">
+    tools:context="com.example.andrew_975.alias.Swipe">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Штаны"
+        android:text="Наука"
         android:id="@+id/textView3"
         android:textSize="50dp"
         android:layout_alignParentTop="true"
@@ -35,12 +36,12 @@
         android:layout_below="@+id/textView3"
         android:layout_toRightOf="@+id/backBut"
         android:layout_toEndOf="@+id/backBut"
-        android:layout_above="@+id/editTextAdd" />
+        android:layout_above="@+id/editTextDel" />
 
     <EditText
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:id="@+id/editTextAdd"
+        android:id="@+id/editTextDel"
         android:textSize="22dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />

@@ -72,6 +72,28 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.andrew_975.alias.MainActivity" />
         </activity>
+        <activity
+            android:name=".TeamSet"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_team_set"
+            android:parentActivityName=".GameActivity"
+            android:theme="@style/FullscreenTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.andrew_975.alias.GameActivity" />
+        </activity>
+        <activity
+            android:name=".GameProc"
+            android:label="@string/title_activity_game_proc" >
+        </activity>
+        <activity
+            android:name=".EndRound"
+            android:label="@string/title_activity_end_round"
+            android:parentActivityName=".GameProc" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.andrew_975.alias.GameProc" />
+        </activity>
     </application>
 
 </manifest>

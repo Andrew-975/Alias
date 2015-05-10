@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.example.andrew_975.alias.entities.Topic;
+import com.example.andrew_975.alias.entities.Word;
 
 /**
  * Created by Yohan on 10.05.2015.
@@ -45,5 +46,38 @@ public class TopicQ {
                 null, //nullColumnHack
                 values); // key/value -> keys = column names/ values = column values
         db.close();
+    }
+
+    public static void deleteTopic(Topic book, Context context) {
+        SQLiteDatabase db = new Database(context).getWritableDatabase();
+        db.delete(Constants.TOPIC_TABLE_NAME, //table name
+                Constants.TOPIC_ID+" = ?",  // selections
+                new String[] { String.valueOf(book.getTopicId()) }); //selections args
+        db.close();
+        //log
+        Log.d("deleteWord", book.toString());
+    }
+
+    public static int updateTopic(Topic word, Context context) {
+
+        // 1. get reference to writable DB
+        SQLiteDatabase db = new Database(context).getWritableDatabase();
+
+        // 2. create ContentValues to add key "column"/value
+        ContentValues values = new ContentValues();
+        values.put(Constants.TOPIC_ID, word.getTopicId()); // get title
+        values.put(Constants.TOPIC_TEXT, word.getTopicText());
+
+        // 3. updating row
+        int i = db.update(Constants.TOPIC_TABLE_NAME, //table
+                values, // column/value
+                Constants.TOPIC_ID+" = ?", // selections
+                new String[] { String.valueOf(word.getTopicId()) }); //selection args
+
+        // 4. close
+        db.close();
+
+        return i;
+
     }
 }

@@ -48,4 +48,38 @@ public class TeamQ {
                 values); // key/value -> keys = column names/ values = column values
         db.close();
     }
+
+    public static void deleteTeam(Team book, Context context) {
+        SQLiteDatabase db = new Database(context).getWritableDatabase();
+        db.delete(Constants.TEAM_TABLE_NAME, //table name
+                Constants.TEAM_ID+" = ?",  // selections
+                new String[] { String.valueOf(book.getTeamId()) }); //selections args
+        db.close();
+        //log
+        Log.d("deleteWord", book.toString());
+    }
+
+    public static int updateTeam(Team team, Context context) {
+
+        // 1. get reference to writable DB
+        SQLiteDatabase db = new Database(context).getWritableDatabase();
+
+        // 2. create ContentValues to add key "column"/value
+        ContentValues values = new ContentValues();
+        values.put(Constants.TEAM_ID, team.getTeamId()); // get title
+        values.put(Constants.TEAM_NAME, team.getTemName());
+        values.put(Constants.TEAM_POINTS, team.getPoints());
+
+        // 3. updating row
+        int i = db.update(Constants.TEAM_TABLE_NAME, //table
+                values, // column/value
+                Constants.TEAM_ID+" = ?", // selections
+                new String[] { String.valueOf(team.getTeamId()) }); //selection args
+
+        // 4. close
+        db.close();
+
+        return i;
+
+    }
 }

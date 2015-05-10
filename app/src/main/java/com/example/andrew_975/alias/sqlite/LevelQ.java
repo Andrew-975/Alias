@@ -48,4 +48,37 @@ public class LevelQ {
                 values); // key/value -> keys = column names/ values = column values
         db.close();
     }
+    public static void deleteLevel(Level book, Context context) {
+        SQLiteDatabase db = new Database(context).getWritableDatabase();
+        db.delete(Constants.LEVEL_TABLE_NAME, //table name
+                Constants.LEVEL_ID+" = ?",  // selections
+                new String[] { String.valueOf(book.getLevelId()) }); //selections args
+        db.close();
+        //log
+        Log.d("deleteWord", book.toString());
+    }
+
+    public static int updateLevel(Level level, Context context) {
+
+        // 1. get reference to writable DB
+        SQLiteDatabase db = new Database(context).getWritableDatabase();
+
+        // 2. create ContentValues to add key "column"/value
+        ContentValues values = new ContentValues();
+        values.put(Constants.LEVEL_ID, level.getLevelId()); // get title
+        values.put(Constants.LEVEL_NAME, level.getLevelName());
+        values.put(Constants.LEVEL_NUMBER, level.getLevelNumber());
+
+        // 3. updating row
+        int i = db.update(Constants.LEVEL_TABLE_NAME, //table
+                values, // column/value
+                Constants.LEVEL_ID+" = ?", // selections
+                new String[] { String.valueOf(level.getLevelId()) }); //selection args
+
+        // 4. close
+        db.close();
+
+        return i;
+
+    }
 }

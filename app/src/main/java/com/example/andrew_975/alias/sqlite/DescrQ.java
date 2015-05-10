@@ -46,4 +46,36 @@ public class DescrQ {
             db.close();
         return descr;
     }
+    public static void deleteDescription(Description book, Context context) {
+        SQLiteDatabase db = new Database(context).getWritableDatabase();
+        db.delete(Constants.DESCRIPTION_TABLE_NAME, //table name
+                Constants.DESCRIPTION_ID+" = ?",  // selections
+                new String[] { String.valueOf(book.getDescrId()) }); //selections args
+        db.close();
+        //log
+        Log.d("deleteWord", book.toString());
+    }
+
+    public static int updateDescription(Description descr, Context context) {
+
+        // 1. get reference to writable DB
+        SQLiteDatabase db = new Database(context).getWritableDatabase();
+
+        // 2. create ContentValues to add key "column"/value
+        ContentValues values = new ContentValues();
+        values.put(Constants.DESCRIPTION_ID, descr.getDescrId()); // get title
+        values.put(Constants.DESCRIPTION_TEXT, descr.getDescrText());
+
+        // 3. updating row
+        int i = db.update(Constants.DESCRIPTION_TABLE_NAME, //table
+                values, // column/value
+                Constants.DESCRIPTION_ID+" = ?", // selections
+                new String[] { String.valueOf(descr.getDescrId()) }); //selection args
+
+        // 4. close
+        db.close();
+
+        return i;
+
+    }
 }

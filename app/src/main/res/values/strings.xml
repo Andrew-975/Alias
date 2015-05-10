@@ -48,4 +48,6 @@
     <string name="title_activity_end_round">EndRound</string>
     <string name="title_activity_how_to_play">HowToPlayActivity</string>
     <string name="title_activity_import">ImportActivity</string>
+    <string name="title_activity_swipe_list_view">SwipeListView</string>
+    <string name="title_activity_test">Test</string>
 </resources>

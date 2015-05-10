@@ -10,14 +10,18 @@ public class PlayedGames {
 
     private Word word;
 
-    private int teamId;
+    private Team team;
 
     private Date playedDate;
 
-    public PlayedGames(int pgId,Word wordId, int teamId, Date playedDate) {
+    public PlayedGames() {
+
+    }
+
+    public PlayedGames(int pgId,Word wordId, Team teamId, Date playedDate) {
         this.pgId = pgId;
         this.playedDate = playedDate;
-        this.teamId = teamId;
+        this.team = teamId;
         this.word = wordId;
     }
 
@@ -29,11 +33,11 @@ public class PlayedGames {
         this.playedDate = playedDate;
     }
 
-    public void setTeamId(int teamId) {
-        this.teamId = teamId;
+    public void setTeam(Team team) {
+        this.team = team;
     }
 
-    public void setWordId(Word wordId) {
+    public void setWord(Word wordId) {
         this.word = wordId;
     }
 
@@ -45,11 +49,11 @@ public class PlayedGames {
         return pgId;
     }
 
-    public int getTeamId() {
-        return teamId;
+    public Team getTeam() {
+        return team;
     }
 
-    public Word getWordId() {
+    public Word getWord() {
         return word;
     }
 }

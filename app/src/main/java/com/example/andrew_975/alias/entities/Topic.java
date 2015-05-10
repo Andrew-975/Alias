@@ -8,6 +8,10 @@ public class Topic {
 
     private String topicText;
 
+    public Topic() {
+
+    }
+
     public Topic(int topicId,String topicText) {
         setTopicId(topicId);
         setTopicText(topicText);

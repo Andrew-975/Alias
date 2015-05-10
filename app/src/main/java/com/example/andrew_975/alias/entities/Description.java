@@ -14,6 +14,10 @@ public class Description {
         this.descrText = descrText;
     }
 
+    public Description() {
+
+    }
+
     public int getDescrId() {
         return descrId;
     }

@@ -10,6 +10,9 @@ public class Team {
 
     private int points;
 
+    public Team() {
+
+    }
     public Team(int teamId,String temName,int points) {
         this.teamId = teamId;
         this.points = points;

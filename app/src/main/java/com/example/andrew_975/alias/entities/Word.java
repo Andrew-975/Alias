@@ -14,10 +14,14 @@ public class Word {
 
     private String wordText;
 
-    private boolean isDefault;
+    public boolean isDef;
+
+    public Word() {
+
+    }
 
     public Word(int wordId,Description descr,Level level,Topic topic,String wordText,boolean isDefault) {
-        setDefault(isDefault);
+        setDef(isDefault);
         setDescr(descr);
         setLevel(level);
         setTopic(topic);
@@ -29,8 +33,8 @@ public class Word {
         this.wordId = wordId;
     }
 
-    public void setDefault(boolean isDefault) {
-        this.isDefault = isDefault;
+    public void setDef(boolean isDef) {
+        this.isDef = isDef;
     }
 
     public void setDescr(Description descr) {
@@ -68,4 +72,5 @@ public class Word {
     public Topic getTopic() {
         return topic;
     }
+
 }

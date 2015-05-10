@@ -10,6 +10,9 @@ public class Level {
 
     private int levelNumber;
 
+    public Level() {
+
+    }
     public Level(int levelId, String levelName, int levelNumber) {
         this.levelId = levelId;
         this.levelName = levelName;

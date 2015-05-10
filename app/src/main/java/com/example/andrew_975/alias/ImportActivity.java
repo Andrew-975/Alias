@@ -6,28 +6,20 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 
 
-public class GameActivity extends ActionBarActivity {
+public class ImportActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game);
-
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.teams, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
+        setContentView(R.layout.activity_import);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_game, menu);
+        getMenuInflater().inflate(R.menu.menu_import, menu);
         return true;
     }
 
@@ -45,16 +37,15 @@ public class GameActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    public void onClickGameToMain(View view) {
-        Intent intent = new Intent(GameActivity.this, MainActivity.class);
+
+    public void onClickDownload(View view) {
+        Intent intent = new Intent(ImportActivity.this, DownloadActivity.class);
         startActivity(intent);
     }
-    public void onClickGameStart(View view) {
-        Intent intent = new Intent(GameActivity.this, GameProc.class);
+
+    public void onClickImportToDict(View view) {
+        Intent intent = new Intent(ImportActivity.this, DictionaryActivity.class);
         startActivity(intent);
     }
-    public void onClickEditTeams(View view) {
-        Intent intent = new Intent(GameActivity.this, TeamSet.class);
-        startActivity(intent);
-    }
+
 }

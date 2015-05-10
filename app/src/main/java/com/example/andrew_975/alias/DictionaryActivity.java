@@ -81,12 +81,13 @@ public class DictionaryActivity extends ActionBarActivity {
         startActivity(intent);
     }
 
-    public void onClickDownload(View view) {
-        Intent intent = new Intent(DictionaryActivity.this, DownloadActivity.class);
-        startActivity(intent);
-    }
     public void onClickEdit(View view) {
         Intent intent = new Intent(DictionaryActivity.this, EditActivity.class);
+        startActivity(intent);
+    }
+
+    public void onClickImport(View view) {
+        Intent intent = new Intent(DictionaryActivity.this, ImportActivity.class);
         startActivity(intent);
     }
 

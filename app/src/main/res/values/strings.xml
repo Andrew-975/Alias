@@ -46,4 +46,6 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="title_activity_game_proc">GameProc</string>
     <string name="title_activity_end_round">EndRound</string>
+    <string name="title_activity_how_to_play">HowToPlayActivity</string>
+    <string name="title_activity_import">ImportActivity</string>
 </resources>

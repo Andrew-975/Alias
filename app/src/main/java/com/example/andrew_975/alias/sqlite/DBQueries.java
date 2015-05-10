@@ -1,7 +1,16 @@
 package com.example.andrew_975.alias.sqlite;
 
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQuery;
+import android.util.Log;
+
+import com.example.andrew_975.alias.entities.*;
+
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 /**
  * Created by Yohan on 10.05.2015.
@@ -39,7 +48,7 @@ public abstract class DBQueries {
             + Constants.LEVEL_ID + " INTEGER,"
             + Constants.TOPIC_ID + " INTEGER,"
             + Constants.WORD_TEXT + " TEXT NOT NULL,"
-            + Constants.WORD_IS_DEFAULT + " INTEGER NOT NULL, "
+            + Constants.WORD_IS_DEFAULT + " TEXT NOT NULL, "
             + "FOREIGN KEY" + Constants.DESCRIPTION_ID + " REFERENCES Description(" + Constants.DESCRIPTION_ID + "),"
             + "FOREIGN KEY" + Constants.LEVEL_ID + " REFERENCES Level(" + Constants.LEVEL_ID + "),"
             + "FOREIGN KEY" + Constants.TOPIC_ID + " REFERENCES Topic(" + Constants.TOPIC_ID + ");";
@@ -52,6 +61,7 @@ public abstract class DBQueries {
         db.execSQL(CREATE_TOPIC_TABLE);
         db.execSQL(CREATE_WORD_TABLE);
     }
+
     public static void deleteAllTables(SQLiteDatabase db) {
         db.execSQL("DROP TABLE IF EXISTS " + Constants.WORD_TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + Constants.PG_TABLE_NAME);

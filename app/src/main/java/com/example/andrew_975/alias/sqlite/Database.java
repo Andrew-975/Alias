@@ -1,8 +1,13 @@
 package com.example.andrew_975.alias.sqlite;
 
 import android.content.Context;
+import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+
+import com.example.andrew_975.alias.entities.Description;
 
 /**
  * Created by Yohan on 10.05.2015.

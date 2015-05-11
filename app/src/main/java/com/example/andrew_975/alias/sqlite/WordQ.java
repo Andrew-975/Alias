@@ -137,4 +137,33 @@ public class WordQ {
 
     }
 
+    public static void insertSugarWord(Word descr) {
+        descr.save();
+    }
+
+    public static Word getSugarWord(long id) {
+        Word description = Word.findById(Word.class,id);
+        return description;
+    }
+
+    public static void updateSugarWord(Word description) {
+        Word oldDescr = Word.findById(
+                Word.class,(long)description.getWordId());
+        oldDescr.setDef(description.isDef);
+        oldDescr.setTopic(description.getTopic());
+        oldDescr.setDescr(description.getDescr());
+        oldDescr.setWordText(description.getWordText());
+        oldDescr.setLevel(description.getLevel());
+        oldDescr.save();
+    }
+
+    public static void deleteSugarTopic(long id) {
+        Word description = Word.findById(Word.class,id);
+        description.delete();
+    }
+
+    public static List<Word> getAllSugarWords() {
+        return Word.listAll(Word.class);
+    }
+
 }

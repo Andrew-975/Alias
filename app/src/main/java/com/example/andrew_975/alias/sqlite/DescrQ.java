@@ -12,6 +12,7 @@ import com.example.andrew_975.alias.entities.Description;
  * Created by Yohan on 10.05.2015.
  */
 public class DescrQ {
+
     public static void insertDescription(Description descr, Context context) {
         //for logging
         Log.d("insertDescription", descr.toString());
@@ -76,6 +77,27 @@ public class DescrQ {
         db.close();
 
         return i;
-
     }
+
+    public static void insertSugarDescr(Description descr) {
+        descr.save();
+    }
+
+    public static Description getSugarDescr(long id) {
+        Description description = Description.findById(Description.class,id);
+        return description;
+    }
+
+    public static void updateSugarDescription(Description description) {
+        Description oldDescr = Description.findById(
+                Description.class,(long)description.getDescrId());
+        oldDescr.setDescrText(description.getDescrText());
+        oldDescr.save();
+    }
+
+    public static void deleteSugarDescription(long id) {
+        Description description = Description.findById(Description.class,id);
+        description.delete();
+    }
+
 }

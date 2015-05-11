@@ -1,9 +1,11 @@
 package com.example.andrew_975.alias.entities;
 
+import com.orm.SugarRecord;
+
 /**
  * Created by Yohan on 10.05.2015.
  */
-public class Team {
+public class Team extends SugarRecord<Team> {
     private int teamId;
 
     private String temName;

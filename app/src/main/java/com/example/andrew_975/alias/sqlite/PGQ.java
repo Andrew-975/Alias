@@ -54,4 +54,27 @@ public class PGQ {
                 values); // key/value -> keys = column names/ values = column values
         db.close();
     }
+
+    public static void insertSugarPG(PlayedGames descr) {
+        descr.save();
+    }
+
+    public static PlayedGames getSugarPG(long id) {
+        PlayedGames description = PlayedGames.findById(PlayedGames.class,id);
+        return description;
+    }
+
+    public static void updateSugarPG(PlayedGames description) {
+        PlayedGames oldDescr = PlayedGames.findById(
+                PlayedGames.class,(long)description.getPgId());
+        oldDescr.setWord(description.getWord());
+        oldDescr.setPlayedDate(description.getPlayedDate());
+        oldDescr.setTeam(description.getTeam());
+        oldDescr.save();
+    }
+
+    public static void deleteSugarPlayedGames(long id) {
+        PlayedGames description = PlayedGames.findById(PlayedGames.class,id);
+        description.delete();
+    }
 }

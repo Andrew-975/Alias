@@ -18,34 +18,29 @@ import android.widget.TextView;
 
 public class DictionaryActivity extends ActionBarActivity {
 
-    //String[] dict = getResources().getStringArray(R.array.dictionaries);
-    //ArrayList<String> dicts = new ArrayList(Arrays.asList( "The Game of Thrones", "Selechi", "Memesy"));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dictionary);
-
         Resources res = getResources();
         ArrayList<String> dicts = new ArrayList<String>();
         Collections.addAll(dicts, res.getStringArray(R.array.dictionaries));
-
         MyAdapter adapter = new MyAdapter(dicts, this);
         ListView list = (ListView) findViewById(R.id.listView);
-        //final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, dicts);
         list.setAdapter(adapter);
-        /*list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View itemClicked, int position,
                                     long id) {
-                TextView textView = (TextView) itemClicked;
-                String strText = textView.getText().toString(); // получаем текст нажатого элемента
-                    startActivity(new Intent(DictionaryActivity.this, EditActivity.class));
+                String Name = itemClicked.toString();
+                TextView editName = (TextView) findViewById(R.id.editName);
+                editName.setText(Name);
+                Intent intent = new Intent(DictionaryActivity.this, EditActivity.class);
+                startActivity(intent);
             }
-        });*/
+        });
     }
-
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -82,8 +77,14 @@ public class DictionaryActivity extends ActionBarActivity {
     }
 
     public void onClickEdit(View view) {
-        Intent intent = new Intent(DictionaryActivity.this, EditActivity.class);
-        startActivity(intent);
+        Resources res = getResources();
+        ArrayList<String> dicts = new ArrayList<String>();
+        Collections.addAll(dicts, res.getStringArray(R.array.dictionaries));
+        MyAdapter adapter = new MyAdapter(dicts, this);
+        ListView list = (ListView) findViewById(R.id.listView);
+        list.setAdapter(adapter);
+
+
     }
 
     public void onClickImport(View view) {

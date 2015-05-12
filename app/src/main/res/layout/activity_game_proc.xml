@@ -83,7 +83,6 @@
         android:layout_height="50dp"
         android:id="@+id/imageButton8"
         android:background="@drawable/drawable"
-        android:onClick="onClickSettingsToMain"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />

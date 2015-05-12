@@ -36,9 +36,6 @@ public class DownloadActivity extends ActionBarActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View itemClicked, int position,
                                     long id) {
-                //TextView textView = (TextView) itemClicked;
-                //String strText = textView.getText().toString(); // получаем текст нажатого элемента
-                //выгружаем файл
                 startActivity(new Intent(DownloadActivity.this, DictionaryActivity.class));
 
             }

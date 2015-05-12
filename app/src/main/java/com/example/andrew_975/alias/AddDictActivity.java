@@ -28,7 +28,7 @@ public class AddDictActivity extends ActionBarActivity {
         Collections.addAll(words, res.getStringArray(R.array.words));
         final ListView list1 = (ListView) findViewById(R.id.editList);
         final EditText edit1 = (EditText) findViewById(R.id.editTextDel);
-        MyAdapter adapter1 = new MyAdapter(words, this);
+        MyAdapter adapter1 = new MyAdapter(words, this, false);
         list1.setAdapter(adapter1);
         edit1.setOnKeyListener(new View.OnKeyListener() {
             public boolean onKey(View v ,int keyCode, KeyEvent event) {

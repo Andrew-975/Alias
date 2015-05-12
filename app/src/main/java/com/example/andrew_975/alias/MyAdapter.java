@@ -4,27 +4,33 @@ package com.example.andrew_975.alias;
  * Created by Ira on 27.04.2015.
  */
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class MyAdapter extends BaseAdapter implements ListAdapter {
-    private ArrayList<String> list = new ArrayList<String>();
+    public ArrayList<String> list = new ArrayList<String>();
     private Context context;
+    private boolean editable;
 
-
-
-    public MyAdapter(ArrayList<String> list, Context context) {
+    public MyAdapter(ArrayList<String> list, Context context,boolean editable) {
         this.list = list;
         this.context = context;
+        this.editable = editable;
     }
 
     @Override
@@ -52,8 +58,10 @@ public class MyAdapter extends BaseAdapter implements ListAdapter {
         }
 
         //Handle TextView and display string from your list
-        TextView listItemText = (TextView)view.findViewById(R.id.list_item_string);
-        listItemText.setText(list.get(position));
+        final TextView listItemText = (TextView)view.findViewById(R.id.list_item_string);
+        final String name = list.get(position);
+        listItemText.setText(name);
+
 
         //Handle buttons and add onClickListeners
         ImageButton deleteBtn = (ImageButton)view.findViewById(R.id.Delete);
@@ -66,8 +74,46 @@ public class MyAdapter extends BaseAdapter implements ListAdapter {
                 notifyDataSetChanged();
             }
         });
+        /*listItemText.setOnClickListener(new View.OnClickListener() {
+           @Override
+            public void onClick(View v) {
+               if(editable == true) {
+                   Toast.makeText(context, name, Toast.LENGTH_SHORT).show();
+                   /*Intent intent = new Intent(this, EditActivity.class);
+                   intent.putExtra("name",name);
+                   startActivity(intent);
+               }
+            }
+                                        }
+        );*/
+        /*listItemText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                if(editable == true) {
+                    if (context instanceof DictionaryActivity) {
 
+                        //((DictionaryActivity) context).onClickEdit(v,listItemText.getAdapter().getItem(position).toString());
+                    }
+                }
+            }
+        });*/
         return view;
     }
+    /*public void onItemClick() {
+        DictionaryActivity d = new DictionaryActivity();
+        Intent intent = new Intent(d, EditActivity.class);
+        intent.putExtra("name",name);
+        startActivity(intent);
+    }
+};*/
+    public void setEditable(boolean b) {
+        editable = b;
+    }
+    public String getName(int position)
+    {
+        return list.get(position);
+    }
+
 }
 

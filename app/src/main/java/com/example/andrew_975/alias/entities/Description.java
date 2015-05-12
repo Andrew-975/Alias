@@ -1,9 +1,9 @@
 package com.example.andrew_975.alias.entities;
-
+import com.orm.SugarRecord;
 /**
  * Created by Yohan on 10.05.2015.
  */
-public class Description {
+public class Description extends SugarRecord<Description> {
 
     private int descrId;
 

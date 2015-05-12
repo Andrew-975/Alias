@@ -81,4 +81,26 @@ public class LevelQ {
         return i;
 
     }
+
+    public static void insertSugarLevel(Level descr) {
+        descr.save();
+    }
+
+    public static Level getSugarLevel(long id) {
+        Level description = Level.findById(Level.class,id);
+        return description;
+    }
+
+    public static void updateSugarLevel(Level description) {
+        Level oldDescr = Level.findById(
+                Level.class,(long)description.getLevelId());
+        oldDescr.setLevelName(description.getLevelName());
+        oldDescr.setLevelNumber(description.getLevelNumber());
+        oldDescr.save();
+    }
+
+    public static void deleteSugarLevel(long id) {
+        Level description = Level.findById(Level.class,id);
+        description.delete();
+    }
 }

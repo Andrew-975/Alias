@@ -82,4 +82,25 @@ public class TeamQ {
         return i;
 
     }
+    public static void insertSugarTeam(Team descr) {
+        descr.save();
+    }
+
+    public static Team getSugarTeam(long id) {
+        Team description = Team.findById(Team.class,id);
+        return description;
+    }
+
+    public static void updateSugarTeam(Team description) {
+        Team oldDescr = Team.findById(
+                Team.class,(long)description.getTeamId());
+        oldDescr.setTemName(description.getTemName());
+        oldDescr.setPoints(description.getPoints());
+        oldDescr.save();
+    }
+
+    public static void deleteSugarTeam(long id) {
+        Team description = Team.findById(Team.class,id);
+        description.delete();
+    }
 }

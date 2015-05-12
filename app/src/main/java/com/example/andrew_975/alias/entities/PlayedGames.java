@@ -1,11 +1,13 @@
 package com.example.andrew_975.alias.entities;
 
+import com.orm.SugarRecord;
+
 import java.util.Date;
 
 /**
  * Created by Yohan on 10.05.2015.
  */
-public class PlayedGames {
+public class PlayedGames extends SugarRecord<PlayedGames>{
     private int pgId;
 
     private Word word;

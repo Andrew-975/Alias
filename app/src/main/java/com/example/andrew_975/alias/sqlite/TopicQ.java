@@ -80,4 +80,24 @@ public class TopicQ {
         return i;
 
     }
+    public static void insertSugarTopic(Topic descr) {
+        descr.save();
+    }
+
+    public static Topic getSugarTopic(long id) {
+        Topic description = Topic.findById(Topic.class,id);
+        return description;
+    }
+
+    public static void updateSugarTopic(Topic description) {
+        Topic oldDescr = Topic.findById(
+                Topic.class,(long)description.getTopicId());
+        oldDescr.setTopicText(description.getTopicText());
+        oldDescr.save();
+    }
+
+    public static void deleteSugarTopic(long id) {
+        Topic description = Topic.findById(Topic.class,id);
+        description.delete();
+    }
 }

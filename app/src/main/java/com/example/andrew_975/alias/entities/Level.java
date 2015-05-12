@@ -1,9 +1,11 @@
 package com.example.andrew_975.alias.entities;
 
+import com.orm.SugarRecord;
+
 /**
  * Created by Yohan on 10.05.2015.
  */
-public class Level {
+public class Level extends SugarRecord<Level>{
     private int levelId;
 
     private String levelName;

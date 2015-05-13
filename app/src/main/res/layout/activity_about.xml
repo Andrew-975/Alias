@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="О приложении"
+        android:text="Об игре"
         android:id="@+id/about_text"
         android:textSize="40dp"
         android:layout_alignParentTop="true"
@@ -22,11 +22,11 @@
         android:layout_height="50dp"
         android:id="@+id/about_back"
         android:background="@drawable/drawable"
-        android:layout_alignTop="@+id/about_text"
-        android:layout_toLeftOf="@+id/about_text"
-        android:layout_toStartOf="@+id/about_text"
         android:clickable="true"
-        android:onClick="onClickAboutToMain" />
+        android:onClick="onClickAboutToMain"
+        android:layout_alignTop="@+id/about_text"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -34,13 +34,9 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="THIS IS ALIAS!!"
         android:id="@+id/textView"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="66dp"
         android:textSize="50dp"
-        android:layout_below="@+id/about_back"
-        android:layout_toRightOf="@+id/about_back"
-        android:layout_toEndOf="@+id/about_back"
-        android:layout_marginLeft="52dp"
-        android:layout_marginStart="52dp" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"

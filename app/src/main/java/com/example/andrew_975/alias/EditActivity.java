@@ -7,17 +7,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
 public class EditActivity extends ActionBarActivity {
 
-    String name;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
-        setTitle(name);
+        String name = getIntent().getStringExtra("name");
+        setName(name);
     }
 
     @Override
@@ -62,6 +64,7 @@ public class EditActivity extends ActionBarActivity {
 
     public void setName(String name)
     {
-        this.name = name;
+        TextView t = (TextView) findViewById(R.id.editName);
+        t.setText(name);
     }
 }

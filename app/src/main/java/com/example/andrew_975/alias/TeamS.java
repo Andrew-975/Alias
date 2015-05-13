@@ -4,40 +4,40 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 
 
-public class DownloadActivity extends ActionBarActivity {
-
-    List<String> di = new ArrayList(Arrays.asList( "The Game of Thrones", "Selechi", "Memesy"));
+public class TeamS extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_download);
+        setContentView(R.layout.activity_team_s);
         Resources res = getResources();
-        ArrayList<String> di = new ArrayList<String>();
-        Collections.addAll(di, res.getStringArray(R.array.add_dictionaries));
-        ListView listDwn = (ListView) findViewById(R.id.downloadList);
-        final ArrayAdapter<String> adapterDwn = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, di);
-        listDwn.setAdapter(adapterDwn);
-        listDwn.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View itemClicked, int position,
-                                    long id) {
-                startActivity(new Intent(DownloadActivity.this, DictionaryActivity.class));
-
+        final ArrayList<String> teams = new ArrayList<String>();
+        Collections.addAll(teams, res.getStringArray(R.array.teamset));
+        MyAdapter adapter = new MyAdapter(teams, this, true);
+        final ListView list = (ListView) findViewById(R.id.listView2);
+        list.setAdapter(adapter);
+        final EditText edit1 = (EditText) findViewById(R.id.editText4);
+        edit1.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v ,int keyCode, KeyEvent event) {
+                // TODO Auto-generated method stub
+                if (event.getAction() == KeyEvent.ACTION_DOWN &&
+                        event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
+                    teams.add(0, edit1.getText().toString());
+                    edit1.setText("");
+                    return true;
+                }
+                return false;
             }
         });
     }
@@ -45,7 +45,7 @@ public class DownloadActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_download, menu);
+        getMenuInflater().inflate(R.menu.menu_team, menu);
         return true;
     }
 
@@ -60,6 +60,12 @@ public class DownloadActivity extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
+
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onClickBackToGame (View view) {
+        Intent intent = new Intent(TeamS.this, GameActivity.class);
+        startActivity(intent);
     }
 }

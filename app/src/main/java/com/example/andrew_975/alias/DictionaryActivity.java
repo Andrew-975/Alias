@@ -11,10 +11,12 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import android.widget.ListView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class DictionaryActivity extends ActionBarActivity {
 
@@ -26,21 +28,24 @@ public class DictionaryActivity extends ActionBarActivity {
         Resources res = getResources();
         ArrayList<String> dicts = new ArrayList<String>();
         Collections.addAll(dicts, res.getStringArray(R.array.dictionaries));
-        MyAdapter adapter = new MyAdapter(dicts, this);
-        ListView list = (ListView) findViewById(R.id.listView);
+        MyAdapter adapter = new MyAdapter(dicts, this, true);
+        final ListView list = (ListView) findViewById(R.id.listView);
         list.setAdapter(adapter);
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        /*list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View itemClicked, int position,
                                     long id) {
-                String Name = itemClicked.toString();
-                TextView editName = (TextView) findViewById(R.id.editName);
-                editName.setText(Name);
-                Intent intent = new Intent(DictionaryActivity.this, EditActivity.class);
-                startActivity(intent);
+                onClickEdit(itemClicked,parent.getAdapter().getItem(position).toString());
             }
-        });
+        });*/
+
+
     }
+    /*@Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        String item = (String)getAdapter().getItem(position);
+        Toast.makeText(this, item + " selected", Toast.LENGTH_LONG).show();
+    }*/
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -71,20 +76,17 @@ public class DictionaryActivity extends ActionBarActivity {
         startActivity(intent);
     }
 
+
     public void onClickBack(View view) {
         Intent intent = new Intent(DictionaryActivity.this, MainActivity.class);
         startActivity(intent);
     }
 
-    public void onClickEdit(View view) {
-        Resources res = getResources();
-        ArrayList<String> dicts = new ArrayList<String>();
-        Collections.addAll(dicts, res.getStringArray(R.array.dictionaries));
-        MyAdapter adapter = new MyAdapter(dicts, this);
-        ListView list = (ListView) findViewById(R.id.listView);
-        list.setAdapter(adapter);
-
-
+    public void onClickEdit(View view){
+                            //String name) {
+        Intent intent = new Intent(this, EditActivity.class);
+        intent.putExtra("name","Этот словарь");
+        startActivity(intent);
     }
 
     public void onClickImport(View view) {

@@ -54,7 +54,7 @@ public class GameActivity extends ActionBarActivity {
         startActivity(intent);
     }
     public void onClickEditTeams(View view) {
-        Intent intent = new Intent(GameActivity.this, TeamSet.class);
+        Intent intent = new Intent(GameActivity.this, TeamS.class);
         startActivity(intent);
     }
 }

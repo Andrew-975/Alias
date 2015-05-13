@@ -42,4 +42,8 @@ public class GameProc extends ActionBarActivity {
         Intent intent = new Intent(GameProc.this, EndRound.class);
         startActivity(intent);
     }
+    public void onClickProcToMain (View view){
+        Intent intent = new Intent(GameProc.this, MainActivity.class);
+        startActivity(intent);
+    }
 }

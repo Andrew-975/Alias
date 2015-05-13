@@ -39,8 +39,12 @@ public class EndRound extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void onClickGame(View view) {
+    public void onClickStartAgain(View view) {
         Intent intent = new Intent(EndRound.this, GameProc.class);
+        startActivity(intent);
+    }
+    public void onClickEndRoundToMain(View view) {
+        Intent intent = new Intent(EndRound.this, MainActivity.class);
         startActivity(intent);
     }
 }

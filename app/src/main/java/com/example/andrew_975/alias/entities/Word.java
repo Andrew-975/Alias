@@ -22,7 +22,7 @@ public class Word extends SugarRecord<Word>{
 
     }
 
-    public Word(int wordId,Description descr,Level level,Topic topic,String wordText,boolean isDefault) {
+    public Word(int wordId, Description descr, Level level, Topic topic, String wordText, boolean isDefault) {
         setDef(isDefault);
         setDescr(descr);
         setLevel(level);
@@ -31,7 +31,8 @@ public class Word extends SugarRecord<Word>{
         setWordText(wordText);
     }
 
-    public void setWordId(int wordId) {
+    //region GetSet
+    public void setWordId ( int wordId){
         this.wordId = wordId;
     }
 
@@ -74,5 +75,5 @@ public class Word extends SugarRecord<Word>{
     public Topic getTopic() {
         return topic;
     }
-
+    //endregion
 }

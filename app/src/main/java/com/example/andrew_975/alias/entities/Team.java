@@ -29,7 +29,7 @@ public class Team extends SugarRecord<Team> {
         this.points = points;
     }
 
-    public void setTemName(String temName) {
+    public void setTeamName(String temName) {
         this.temName = temName;
     }
 

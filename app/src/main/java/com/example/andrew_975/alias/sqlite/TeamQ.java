@@ -27,7 +27,7 @@ public class TeamQ {
             cursor.moveToFirst();
         Team descr = new Team();
         descr.setTeamId(Integer.parseInt(cursor.getString(0)));
-        descr.setTemName(cursor.getString(1));
+        descr.setTeamName(cursor.getString(1));
         descr.setPoints(Integer.parseInt(cursor.getString(2)));
         Log.d("getPG(" + id + ")", descr.toString());
         if (db != null && db.isOpen())
@@ -94,7 +94,7 @@ public class TeamQ {
     public static void updateSugarTeam(Team description) {
         Team oldDescr = Team.findById(
                 Team.class,(long)description.getTeamId());
-        oldDescr.setTemName(description.getTemName());
+        oldDescr.setTeamName(description.getTemName());
         oldDescr.setPoints(description.getPoints());
         oldDescr.save();
     }

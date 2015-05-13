@@ -87,6 +87,7 @@ tools:context="com.example.andrew_975.alias.DictionaryActivity"
         android:textSize="40dp"
         android:clickable="true"
         android:layout_above="@+id/textView6"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="#b1adadad" />
 
 </RelativeLayout>

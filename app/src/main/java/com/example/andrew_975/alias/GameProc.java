@@ -1,19 +1,37 @@
 package com.example.andrew_975.alias;
 
+import java.util.Timer;
+import java.util.TimerTask;
+import android.content.res.Resources;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 
 public class GameProc extends ActionBarActivity {
 
+    int a;
+    private Timer mTimer;
+    private MyTimerTask mMyTimerTask;
+    private TextView tV;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_proc);
+
+        tV = (TextView) findViewById(R.id.textView12);
+        if (mTimer != null) {
+            mTimer.cancel();
+        }
+        mTimer = new Timer();
+        mMyTimerTask = new MyTimerTask();
+
+        a = 30;
+        mTimer.schedule(mMyTimerTask, 1000, 1000);
     }
 
 
@@ -46,4 +64,22 @@ public class GameProc extends ActionBarActivity {
         Intent intent = new Intent(GameProc.this, MainActivity.class);
         startActivity(intent);
     }
+    class MyTimerTask extends TimerTask {
+
+        @Override
+        public void run() {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    tV.setText("" + a + " sec");
+                    if (a == 0) {
+                        mTimer.cancel();
+                        mTimer = null;
+                    }
+                    a--;
+                }
+            });
+        }
+    }
 }
+

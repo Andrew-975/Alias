@@ -30,7 +30,7 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:id="@+id/imageView"
-        android:src="@drawable/a123"
+        android:src="@drawable/clock"
         android:layout_below="@+id/textView10"
         android:layout_centerHorizontal="true" />
 
@@ -38,10 +38,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="33 сек"
+        android:text="30 sec"
         android:id="@+id/textView12"
-        android:layout_alignBottom="@+id/imageView"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:textSize="40dp" />
 
     <TextView
         android:layout_width="wrap_content"

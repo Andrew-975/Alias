@@ -2,6 +2,7 @@ package com.example.andrew_975.alias;
 
 import android.content.Intent;
 import android.content.res.Resources;
+import android.nfc.Tag;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -67,9 +68,9 @@ public class TeamS extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public Exchange onClickTeamSReady(ArrayList<Team> array){
-        Exchange exchange = new Exchange(array);
-        return exchange;
+    public void onClickTeamSReady(ArrayList<Team> array){
+        Exchange.teams = array;
+        //return Exchange.teams;
     }
 
     public ArrayList<Team> convertToTeams(ArrayList<String> t)
@@ -86,7 +87,8 @@ public class TeamS extends ActionBarActivity {
         Intent intent = new Intent(TeamS.this, GameActivity.class);
         //intent.putExtra("arrayTeams",array);
         onClickTeamSReady(convertToTeams(teams));
-        //Log.
+
+        Log.d("myLog", "teamsarehere");
         startActivity(intent);
     }
 }

@@ -9,6 +9,11 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.example.andrew_975.alias.entities.Parametres;
+import com.example.andrew_975.alias.entities.Team;
+
+import java.util.ArrayList;
+
 
 public class GameActivity extends ActionBarActivity {
 
@@ -16,7 +21,6 @@ public class GameActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.teams, android.R.layout.simple_spinner_item);
@@ -42,7 +46,6 @@ public class GameActivity extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
     public void onClickGameToMain(View view) {

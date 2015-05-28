@@ -70,7 +70,5 @@ public class AddDictActivity extends ActionBarActivity {
         Intent intent = new Intent(AddDictActivity.this, DictionaryActivity.class);
         startActivity(intent);
     }
-    public void onClickEdit(View view) {
 
-    }
 }

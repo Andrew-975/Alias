@@ -74,41 +74,19 @@ public class MyAdapter extends BaseAdapter implements ListAdapter {
                 notifyDataSetChanged();
             }
         });
-        /*listItemText.setOnClickListener(new View.OnClickListener() {
+        listItemText.setOnClickListener(new View.OnClickListener() {
            @Override
             public void onClick(View v) {
                if(editable == true) {
-                   Toast.makeText(context, name, Toast.LENGTH_SHORT).show();
-                   /*Intent intent = new Intent(this, EditActivity.class);
-                   intent.putExtra("name",name);
-                   startActivity(intent);
+                   if(context instanceof DictionaryActivity){
+                       ((DictionaryActivity)context).onClickEditAdapter(v,name);
+                   }
+
                }
             }
                                         }
-        );*/
-        /*listItemText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-                if(editable == true) {
-                    if (context instanceof DictionaryActivity) {
-
-                        //((DictionaryActivity) context).onClickEdit(v,listItemText.getAdapter().getItem(position).toString());
-                    }
-                }
-            }
-        });*/
+        );
         return view;
-    }
-    /*public void onItemClick() {
-        DictionaryActivity d = new DictionaryActivity();
-        Intent intent = new Intent(d, EditActivity.class);
-        intent.putExtra("name",name);
-        startActivity(intent);
-    }
-};*/
-    public void setEditable(boolean b) {
-        editable = b;
     }
     public String getName(int position)
     {

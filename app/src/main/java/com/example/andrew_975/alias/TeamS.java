@@ -10,6 +10,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.util.Log;
+
+import com.example.andrew_975.alias.entities.Team;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,14 +20,14 @@ import java.util.Collections;
 
 public class TeamS extends ActionBarActivity {
 
+    final ArrayList<String> teams = new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_team_s);
         Resources res = getResources();
-        final ArrayList<String> teams = new ArrayList<String>();
         Collections.addAll(teams, res.getStringArray(R.array.teamset));
-        MyAdapter adapter = new MyAdapter(teams, this, true);
+        MyAdapter adapter = new MyAdapter(teams, this, false);
         final ListView list = (ListView) findViewById(R.id.listView2);
         list.setAdapter(adapter);
         final EditText edit1 = (EditText) findViewById(R.id.editText4);
@@ -64,8 +67,26 @@ public class TeamS extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public Exchange onClickTeamSReady(ArrayList<Team> array){
+        Exchange exchange = new Exchange(array);
+        return exchange;
+    }
+
+    public ArrayList<Team> convertToTeams(ArrayList<String> t)
+    {
+        ArrayList<Team> teams = new ArrayList<Team>();
+        for(int i = 0 ; i < t.size(); i++)
+        {
+            teams.get(i).setTeamName(t.get(i));
+            teams.get(i).setTeamId(i);
+        }
+        return teams;
+    }
     public void onClickBackToGame (View view) {
         Intent intent = new Intent(TeamS.this, GameActivity.class);
+        //intent.putExtra("arrayTeams",array);
+        onClickTeamSReady(convertToTeams(teams));
+        //Log.
         startActivity(intent);
     }
 }

@@ -25,21 +25,14 @@ public class DictionaryActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dictionary);
-        Resources res = getResources();
+        /*Resources res = getResources();
         ArrayList<String> dicts = new ArrayList<String>();
-        Collections.addAll(dicts, res.getStringArray(R.array.dictionaries));
+        Collections.addAll(dicts, res.getStringArray(R.array.dictionaries));*/
+        String[] array = new String[] { "khren", "schlampe", "sweet" };
+        ArrayList<String> dicts = (ArrayList)Arrays.asList(array);
         MyAdapter adapter = new MyAdapter(dicts, this, true);
         final ListView list = (ListView) findViewById(R.id.listView);
         list.setAdapter(adapter);
-        /*list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View itemClicked, int position,
-                                    long id) {
-                onClickEdit(itemClicked,parent.getAdapter().getItem(position).toString());
-            }
-        });*/
-
-
     }
     /*@Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
@@ -82,10 +75,16 @@ public class DictionaryActivity extends ActionBarActivity {
         startActivity(intent);
     }
 
-    public void onClickEdit(View view){
+   /* public void onClickEdit(View view){
                             //String name) {
         Intent intent = new Intent(this, EditActivity.class);
         intent.putExtra("name","Этот словарь");
+        startActivity(intent);
+    }*/
+
+    public void onClickEditAdapter(View view,String s){
+        Intent intent = new Intent(this, EditActivity.class);
+        intent.putExtra("name",s);
         startActivity(intent);
     }
 

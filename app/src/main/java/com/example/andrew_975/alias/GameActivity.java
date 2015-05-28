@@ -6,11 +6,28 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.SeekBar;
 import android.widget.Spinner;
+import android.widget.Toast;
+
+import com.example.andrew_975.alias.entities.Game;
+import com.example.andrew_975.alias.entities.Parametres;
+import com.example.andrew_975.alias.entities.Team;
+import com.example.andrew_975.alias.entities.Topic;
+
+import java.util.ArrayList;
 
 
 public class GameActivity extends ActionBarActivity {
+
+    public Game game;
+    public Parametres params;
+    protected int turnLengthSeconds;
+    protected int numberWordsToWin;
+    protected Topic topic;
+    ArrayList<Team> teams;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +39,54 @@ public class GameActivity extends ActionBarActivity {
                 R.array.teams, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+
+        final SeekBar sk=(SeekBar) findViewById(R.id.seekBar);
+        sk.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                turnLengthSeconds = progress;
+            }
+        });
+
+        final SeekBar sk1=(SeekBar) findViewById(R.id.seekBar2);
+        sk1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                numberWordsToWin = progress;
+            }
+        });
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                String nameTopic = parentView.getItemAtPosition(position).toString();
+                topic = new Topic(1, nameTopic);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+            }
+
+        });
     }
 
     @Override
@@ -50,11 +115,17 @@ public class GameActivity extends ActionBarActivity {
         startActivity(intent);
     }
     public void onClickGameStart(View view) {
-        Intent intent = new Intent(GameActivity.this, GameProc.class);
+        startGame();
+        Intent intent = new Intent(GameActivity.this, GameProc.class)
         startActivity(intent);
     }
     public void onClickEditTeams(View view) {
         Intent intent = new Intent(GameActivity.this, TeamS.class);
         startActivity(intent);
+    }
+
+    public void startGame() {
+        params = new Parametres(turnLengthSeconds, numberWordsToWin, topic);
+        game = new Game(teams, params);
     }
 }

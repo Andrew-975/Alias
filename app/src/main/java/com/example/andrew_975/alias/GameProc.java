@@ -11,6 +11,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.andrew_975.alias.entities.Turn;
+
 
 public class GameProc extends ActionBarActivity {
 
@@ -32,6 +34,8 @@ public class GameProc extends ActionBarActivity {
 
         a = 30;
         mTimer.schedule(mMyTimerTask, 1000, 1000);
+
+        //public Turn turn = new Turn(playingTeam, parametres);
     }
 
 

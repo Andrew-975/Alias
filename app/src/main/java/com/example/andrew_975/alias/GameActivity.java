@@ -32,7 +32,7 @@ public class GameActivity extends ActionBarActivity {
     protected int turnLengthSeconds;
     protected int numberWordsToWin;
     protected Topic topic;
-    ArrayList<Team> teams;
+    //ArrayList<Team> teams;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,7 +119,7 @@ public class GameActivity extends ActionBarActivity {
     }
     public void onClickGameStart(View view) {
         startGame();
-        Intent intent = new Intent(GameActivity.this, GameProc.class)
+        Intent intent = new Intent(GameActivity.this, GameProc.class);
         startActivity(intent);
     }
     public void onClickEditTeams(View view) {
@@ -129,6 +129,7 @@ public class GameActivity extends ActionBarActivity {
 
     public void startGame() {
         params = new Parametres(turnLengthSeconds, numberWordsToWin, topic);
-        game = new Game(teams, params);
+        game = new Game(Exchange.teams, params);
+        Exchange.game = game;
     }
 }

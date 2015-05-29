@@ -1,5 +1,6 @@
 package com.example.andrew_975.alias;
 
+import com.example.andrew_975.alias.entities.Game;
 import com.example.andrew_975.alias.entities.Parametres;
 import com.example.andrew_975.alias.entities.Team;
 
@@ -12,7 +13,6 @@ public class Exchange {
     //public static Parametres parametres;
     public static ArrayList<Team> teams;
 
-    public Exchange(ArrayList<Team> teams){
-        this.teams = teams;
-    }
+    public static Game game;
+
 }

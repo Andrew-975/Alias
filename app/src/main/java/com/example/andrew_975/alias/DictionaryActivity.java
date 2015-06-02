@@ -20,27 +20,21 @@ import android.widget.Toast;
 
 public class DictionaryActivity extends ActionBarActivity {
 
-
+    ArrayList<DictionaryForAdd> dicts = new ArrayList<DictionaryForAdd>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dictionary);
-        /*Resources res = getResources();
-        ArrayList<String> dicts = new ArrayList<String>();
-        Collections.addAll(dicts, res.getStringArray(R.array.dictionaries));*/
-        String[] array = new String[] { "khren", "schlampe", "sweet" };
-        //ArrayList<String> dicts = (ArrayList)Arrays.asList(array);
-        ArrayList<String> dicts = new ArrayList<String>();
-        Collections.addAll(dicts, array);
-        MyAdapter adapter = new MyAdapter(dicts, this, true);
+        fillDicts();
+        if(Exchange.dictionary != null)
+        {
+            dicts.add(Exchange.dictionary);
+            Exchange.dictionary = null;
+        }
+        MyAdapter adapter = new MyAdapter(dictsNames(), this, true);
         final ListView list = (ListView) findViewById(R.id.listView);
         list.setAdapter(adapter);
     }
-    /*@Override
-    protected void onListItemClick(ListView l, View v, int position, long id) {
-        String item = (String)getAdapter().getItem(position);
-        Toast.makeText(this, item + " selected", Toast.LENGTH_LONG).show();
-    }*/
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -72,17 +66,25 @@ public class DictionaryActivity extends ActionBarActivity {
     }
 
 
+    public ArrayList<String> dictsNames(){
+        ArrayList<String> s = new ArrayList<String>();
+        for(int i = 0; i < dicts.size();i++){
+            s.add(dicts.get(i).getName());
+        }
+        return s;
+    }
+    public void fillDicts(){
+        for(int i = 0;i < 3;i++){
+            ArrayList<String> s = new ArrayList<String>(Arrays.asList("kokoko","rrrrr","jhgfcjyhgc"));
+            DictionaryForAdd d = new DictionaryForAdd("selech",s);
+            dicts.add(d);
+        }
+    }
+
     public void onClickBack(View view) {
         Intent intent = new Intent(DictionaryActivity.this, MainActivity.class);
         startActivity(intent);
     }
-
-   /* public void onClickEdit(View view){
-                            //String name) {
-        Intent intent = new Intent(this, EditActivity.class);
-        intent.putExtra("name","Этот словарь");
-        startActivity(intent);
-    }*/
 
     public void onClickEditAdapter(View view,String s){
         Intent intent = new Intent(this, EditActivity.class);

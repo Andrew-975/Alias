@@ -57,7 +57,7 @@ public class EditActivity extends ActionBarActivity {
     public void onClickDel(View view) {
         Toast.makeText(getApplicationContext(), "Delete",
                 Toast.LENGTH_SHORT).show();
-        EditText edit = (EditText) findViewById(R.id.editTextDel);
+        EditText edit = (EditText) findViewById(R.id.addWords);
         edit.setText("");
     }
 

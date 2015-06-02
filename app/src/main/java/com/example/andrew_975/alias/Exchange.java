@@ -15,4 +15,7 @@ public class Exchange {
 
     public static Game game;
 
+
+    //public static ArrayList<DictionaryForAdd> dicts;
+    public static DictionaryForAdd dictionary;
 }

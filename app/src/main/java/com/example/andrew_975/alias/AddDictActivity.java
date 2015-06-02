@@ -1,33 +1,32 @@
 package com.example.andrew_975.alias;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 
 public class AddDictActivity extends ActionBarActivity {
 
+    String name = "";
+    ArrayList<String> words = new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_dict);
-        Resources res = getResources();
-        final ArrayList<String> words = new ArrayList<String>();
-        Collections.addAll(words, res.getStringArray(R.array.words));
+        //Resources res = getResources();
+        //final ArrayList<String> words = new ArrayList<String>();
+        //Collections.addAll(words, res.getStringArray(R.array.words));
         final ListView list1 = (ListView) findViewById(R.id.editList);
-        final EditText edit1 = (EditText) findViewById(R.id.editTextDel);
+        final EditText edit = (EditText) findViewById(R.id.dictName);
+        final EditText edit1 = (EditText) findViewById(R.id.addWords);
         MyAdapter adapter1 = new MyAdapter(words, this, false);
         list1.setAdapter(adapter1);
         edit1.setOnKeyListener(new View.OnKeyListener() {
@@ -36,6 +35,7 @@ public class AddDictActivity extends ActionBarActivity {
                 if (event.getAction() == KeyEvent.ACTION_DOWN &&
                                 event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
                         words.add(0, edit1.getText().toString());
+                        name = edit.getText().toString();
                         edit1.setText("");
                         return true;
                     }
@@ -63,14 +63,12 @@ public class AddDictActivity extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-
-
-
         return super.onOptionsItemSelected(item);
     }
 
     public void onClickBackToDict(View view) {
         Intent intent = new Intent(AddDictActivity.this, DictionaryActivity.class);
+        Exchange.dictionary = new DictionaryForAdd(name,words);
         startActivity(intent);
     }
 

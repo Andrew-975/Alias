@@ -129,7 +129,8 @@ public class GameActivity extends ActionBarActivity {
 
     public void startGame() {
         params = new Parametres(turnLengthSeconds, numberWordsToWin, topic);
-        game = new Game(Exchange.teams, params);
-        Exchange.game = game;
+        Exchange.game = new Game(Exchange.teams, params);
+        Exchange.game.start();
+        //Exchange.game = game;
     }
 }

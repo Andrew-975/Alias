@@ -86,7 +86,9 @@
         android:layout_alignRight="@+id/raund"
         android:layout_alignEnd="@+id/raund"
         android:layout_alignLeft="@+id/raund"
-        android:layout_alignStart="@+id/raund" />
+        android:layout_alignStart="@+id/raund"
+        android:longClickable="false"
+        android:max="200" />
 
     <SeekBar
         android:layout_width="wrap_content"
@@ -96,6 +98,7 @@
         android:layout_alignLeft="@+id/limit"
         android:layout_alignStart="@+id/limit"
         android:layout_alignRight="@+id/seekBar"
-        android:layout_alignEnd="@+id/seekBar" />
+        android:layout_alignEnd="@+id/seekBar"
+        android:max="100" />
 
 </RelativeLayout>

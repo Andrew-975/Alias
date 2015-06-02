@@ -63,6 +63,9 @@ public class AddDictActivity extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
+
+
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -70,5 +73,8 @@ public class AddDictActivity extends ActionBarActivity {
         Intent intent = new Intent(AddDictActivity.this, DictionaryActivity.class);
         startActivity(intent);
     }
+
+
+
 
 }

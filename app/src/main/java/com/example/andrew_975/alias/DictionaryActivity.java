@@ -29,7 +29,9 @@ public class DictionaryActivity extends ActionBarActivity {
         ArrayList<String> dicts = new ArrayList<String>();
         Collections.addAll(dicts, res.getStringArray(R.array.dictionaries));*/
         String[] array = new String[] { "khren", "schlampe", "sweet" };
-        ArrayList<String> dicts = (ArrayList)Arrays.asList(array);
+        //ArrayList<String> dicts = (ArrayList)Arrays.asList(array);
+        ArrayList<String> dicts = new ArrayList<String>();
+        Collections.addAll(dicts, array);
         MyAdapter adapter = new MyAdapter(dicts, this, true);
         final ListView list = (ListView) findViewById(R.id.listView);
         list.setAdapter(adapter);

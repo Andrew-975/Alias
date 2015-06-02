@@ -20,7 +20,7 @@ import java.util.Collections;
 
 public class TeamS extends ActionBarActivity {
 
-    final ArrayList<String> teams = new ArrayList<String>();
+    ArrayList<String> teams = new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,20 +72,22 @@ public class TeamS extends ActionBarActivity {
         return exchange;
     }
 
-    public ArrayList<Team> convertToTeams(ArrayList<String> t)
+    public ArrayList<Team> convertToTeams()
     {
-        ArrayList<Team> teams = new ArrayList<Team>();
-        for(int i = 0 ; i < t.size(); i++)
+        ArrayList<Team> teamsNew = new ArrayList<Team>();
+        for(int i = 0 ; i < teams.size(); i++)
         {
-            teams.get(i).setTeamName(t.get(i));
-            teams.get(i).setTeamId(i);
+            Team t = new Team();
+            t.setTeamId(i);
+            t.setTeamName(teams.get(i));
+            teamsNew.add(t);
         }
-        return teams;
+        return teamsNew;
     }
     public void onClickBackToGame (View view) {
         Intent intent = new Intent(TeamS.this, GameActivity.class);
         //intent.putExtra("arrayTeams",array);
-        onClickTeamSReady(convertToTeams(teams));
+        onClickTeamSReady(convertToTeams());
         //Log.
         startActivity(intent);
     }

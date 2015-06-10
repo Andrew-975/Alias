@@ -98,7 +98,7 @@ public class TopicQ {
         oldDescr.save();
     }
 
-    public static void deleteSugarTopicT(long id) {
+    public static void deleteSugarTopic(long id) {
         Topic description = Topic.findById(Topic.class,id);
         description.delete();
     }

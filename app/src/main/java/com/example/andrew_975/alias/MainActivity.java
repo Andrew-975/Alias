@@ -1,5 +1,6 @@
 package com.example.andrew_975.alias;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -7,16 +8,23 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import static com.example.andrew_975.alias.sqlite.TopicQ.deleteSugarTopicT;
-import static com.example.andrew_975.alias.sqlite.WordQ.deleteSugarTopic;
+import com.example.andrew_975.alias.entities.Description;
+import com.example.andrew_975.alias.entities.Topic;
+import com.example.andrew_975.alias.entities.Word;
+import com.example.andrew_975.alias.sqlite.Database;
+
+import static com.example.andrew_975.alias.sqlite.TopicQ.deleteSugarTopic;
+import static com.example.andrew_975.alias.sqlite.TopicQ.insertSugarTopic;
+import static com.example.andrew_975.alias.sqlite.WordQ.insertSugarWord;
 
 public class MainActivity extends ActionBarActivity {
 
+    //Context context;
    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
+   }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -60,6 +68,7 @@ public class MainActivity extends ActionBarActivity {
         Intent intent = new Intent(MainActivity.this, HowToPlayActivity.class);
         startActivity(intent);
     }
+
 
 }
 

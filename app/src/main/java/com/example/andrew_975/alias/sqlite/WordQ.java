@@ -157,7 +157,7 @@ public class WordQ {
         oldDescr.save();
     }
 
-    public static void deleteSugarTopic(long id) {
+    public static void deleteSugarWord(long id) {
         Word description = Word.findById(Word.class,id);
         description.delete();
     }

@@ -19,7 +19,7 @@
             android:value="true" />
         <meta-data
             android:name="DOMAIN_PACKAGE_NAME"
-            android:value="com.example" />
+            android:value="com.example.andrew_975.alias" />
 
         <activity
             android:name=".MainActivity"

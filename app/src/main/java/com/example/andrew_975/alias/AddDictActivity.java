@@ -10,7 +10,14 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.example.andrew_975.alias.entities.Description;
+import com.example.andrew_975.alias.entities.Topic;
+import com.example.andrew_975.alias.entities.Word;
+
 import java.util.ArrayList;
+
+import static com.example.andrew_975.alias.sqlite.TopicQ.insertSugarTopic;
+import static com.example.andrew_975.alias.sqlite.WordQ.insertSugarWord;
 
 
 public class AddDictActivity extends ActionBarActivity {
@@ -68,7 +75,14 @@ public class AddDictActivity extends ActionBarActivity {
 
     public void onClickBackToDict(View view) {
         Intent intent = new Intent(AddDictActivity.this, DictionaryActivity.class);
-        Exchange.dictionary = new DictionaryForAdd(name,words);
+        Topic t = new Topic(Exchange.lastTopicId+1,name);
+        insertSugarTopic(t);
+        //Exchange.lastTopicId ++;
+        for(int i = 0;i < words.size();i++){
+            Word w = new Word(Exchange.lastWordId,new Description(0,"description"),null,t,words.get(i),false);
+            insertSugarWord(w);
+        }
+        //Exchange.dictionary = new Topic(Exchange.lastId,name);
         startActivity(intent);
     }
 

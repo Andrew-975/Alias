@@ -10,10 +10,23 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.andrew_975.alias.entities.Description;
+import com.example.andrew_975.alias.entities.Topic;
+import com.example.andrew_975.alias.entities.Word;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.example.andrew_975.alias.sqlite.TopicQ.getSugarTopic;
+import static com.example.andrew_975.alias.sqlite.WordQ.deleteSugarWord;
+import static com.example.andrew_975.alias.sqlite.WordQ.getAllSugarWords;
+import static com.example.andrew_975.alias.sqlite.WordQ.insertSugarWord;
+import static com.example.andrew_975.alias.sqlite.WordQ.updateSugarWord;
+
 
 public class EditActivity extends ActionBarActivity {
 
-
+    List<Word> words = DictionaryActivity.getWordsOfTopic(Exchange.CurrentTopicId);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,20 +61,23 @@ public class EditActivity extends ActionBarActivity {
         startActivity(intent);
     }
     public void onClickOk(View view) {
-        Toast.makeText(getApplicationContext(), "Add",
-                Toast.LENGTH_SHORT).show();
         EditText edit = (EditText) findViewById(R.id.editTextAdd);
+        //Word w = new Word(Exchange.lastWordId+1,edit.getText().toString(),getSugarTopic(Exchange.CurrentTopicId));
+        Word w =   new Word(Exchange.lastWordId+1, new Description(0, "description"), null, getSugarTopic(Exchange.CurrentTopicId), edit.getText().toString(),false);
+        insertSugarWord(w);
         edit.setText("");
     }
 
     public void onClickDel(View view) {
-        Toast.makeText(getApplicationContext(), "Delete",
-                Toast.LENGTH_SHORT).show();
         EditText edit = (EditText) findViewById(R.id.addWords);
+        for(int i = 0; i < words.size();i++){
+            String s = edit.getText().toString();
+            if(words.get(i).getWordText().equals(s)){
+                deleteSugarWord(words.get(i).getId());
+            }
+        }
         edit.setText("");
     }
-
-
     public void setName(String name)
     {
         TextView t = (TextView) findViewById(R.id.editName);

@@ -30,6 +30,15 @@ public class Word extends SugarRecord<Word>{
         setWordId(wordId);
         setWordText(wordText);
     }
+    public Word(int wordId,String wordText,Topic topic){
+        new Word(wordId, new Description(0, "description"), null, topic, wordText,false);
+        setDef(true);
+        setDescr(new Description(0, "description"));
+        setLevel(null);
+        setTopic(topic);
+        setWordId(wordId);
+        setWordText(wordText);
+    }
 
     //region GetSet
     public void setWordId ( int wordId){

@@ -20,7 +20,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.andrew_975.alias.entities.Topic;
+
 import java.util.ArrayList;
+
+import static com.example.andrew_975.alias.sqlite.TopicQ.deleteSugarTopic;
 
 public class MyAdapter extends BaseAdapter implements ListAdapter {
     public ArrayList<String> list = new ArrayList<String>();
@@ -71,6 +75,8 @@ public class MyAdapter extends BaseAdapter implements ListAdapter {
             public void onClick(View v) {
                 //do something
                 list.remove(position); //or some other task
+                long l = ((DictionaryActivity) context).getTopicfromList(name).getTopicId();
+                deleteSugarTopic(l);
                 notifyDataSetChanged();
             }
         });
@@ -79,7 +85,10 @@ public class MyAdapter extends BaseAdapter implements ListAdapter {
             public void onClick(View v) {
                if(editable == true) {
                    if(context instanceof DictionaryActivity){
-                       ((DictionaryActivity)context).onClickEditAdapter(v,name);
+                       ((DictionaryActivity)context).onClickEditAdapter(v, name);
+                       if(((DictionaryActivity)context).dicts.size() != 0) {
+                           Exchange.CurrentTopicId = ((DictionaryActivity) context).getTopicfromList(name).getTopicId();
+                       }
                    }
 
                }

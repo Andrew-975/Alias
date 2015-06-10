@@ -13,6 +13,10 @@ public class DictionaryForAdd {
         this.name = name;
         this.words = words;
     }
+    public DictionaryForAdd(String name){
+        this.name = name;
+        this.words = null;
+    }
     public String getName(){
         return name;
     }

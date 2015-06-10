@@ -19,7 +19,7 @@
             android:value="true" />
         <meta-data
             android:name="DOMAIN_PACKAGE_NAME"
-            android:value="com.example" />
+            android:value="com.example.andrew_975.alias" />
 
         <activity
             android:name=".MainActivity"
@@ -131,6 +131,14 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.andrew_975.alias.GameActivity" />
+        </activity>
+        <activity
+            android:name=".TurnStat"
+            android:label="@string/title_activity_turn_stat" >
+        </activity>
+        <activity
+            android:name=".RoundStat"
+            android:label="@string/title_activity_round_stat" >
         </activity>
         <activity
             android:name=".WordStatistic"

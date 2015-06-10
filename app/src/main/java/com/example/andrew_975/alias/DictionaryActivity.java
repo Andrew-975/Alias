@@ -5,32 +5,42 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.ViewGroup;
 import android.widget.ListView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.andrew_975.alias.entities.Description;
+import com.example.andrew_975.alias.entities.Topic;
+import com.example.andrew_975.alias.entities.Word;
+import com.example.andrew_975.alias.sqlite.Database;
+
+import static com.example.andrew_975.alias.sqlite.TopicQ.getAllSugarTopics;
+import static com.example.andrew_975.alias.sqlite.TopicQ.getSugarTopic;
+import static com.example.andrew_975.alias.sqlite.TopicQ.insertSugarTopic;
+import static com.example.andrew_975.alias.sqlite.WordQ.getAllSugarWords;
+import static com.example.andrew_975.alias.sqlite.WordQ.insertSugarWord;
+
 
 public class DictionaryActivity extends ActionBarActivity {
 
-    ArrayList<DictionaryForAdd> dicts = new ArrayList<DictionaryForAdd>();
+    List<Topic> dicts = new ArrayList<Topic>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dictionary);
         fillDicts();
-        if(Exchange.dictionary != null)
+        /*if(Exchange.dictionary != null)
         {
             dicts.add(Exchange.dictionary);
             Exchange.dictionary = null;
-        }
+        }*/
         MyAdapter adapter = new MyAdapter(dictsNames(), this, true);
         final ListView list = (ListView) findViewById(R.id.listView);
         list.setAdapter(adapter);
@@ -65,20 +75,44 @@ public class DictionaryActivity extends ActionBarActivity {
         startActivity(intent);
     }
 
-
     public ArrayList<String> dictsNames(){
         ArrayList<String> s = new ArrayList<String>();
         for(int i = 0; i < dicts.size();i++){
-            s.add(dicts.get(i).getName());
+            s.add(dicts.get(i).getTopicText());
         }
         return s;
     }
     public void fillDicts(){
-        for(int i = 0;i < 3;i++){
-            ArrayList<String> s = new ArrayList<String>(Arrays.asList("kokoko","rrrrr","jhgfcjyhgc"));
-            DictionaryForAdd d = new DictionaryForAdd("selech",s);
-            dicts.add(d);
+
+
+        List<Topic> allTopics = getAllSugarTopics();
+        for(int i = 0;i < allTopics.size();i++){
+            dicts.add(allTopics.get(i));
+            Log.v("mylog", "" + allTopics.get(i).getId());
         }
+    }
+
+    public Topic getTopicfromList(String name){
+        Topic t = new Topic(-1,"");
+        for(int i = 0;i < dicts.size();i++){
+            if(dicts.get(i).getTopicText().equals(name)){
+                //return dicts.get(i);
+                //break;
+                t = dicts.get(i);
+            }
+        }
+        return t;
+    }
+    public static List<Word> getWordsOfTopic(int topicId){
+        Topic topic = getSugarTopic(topicId);
+        List<Word> wordList = new ArrayList<>();
+         List<Word> allWords = getAllSugarWords();
+        for(int i = 0;i < allWords.size();i++) {
+           if(allWords.get(i).getTopic().equals(topic)){
+               wordList.add(allWords.get(i));
+           }
+        }
+        return wordList;
     }
 
     public void onClickBack(View view) {
@@ -96,6 +130,17 @@ public class DictionaryActivity extends ActionBarActivity {
         Intent intent = new Intent(DictionaryActivity.this, ImportActivity.class);
         startActivity(intent);
     }
+    /*public void neu(){
+        Database d = new Database(this);
+        Topic t = new Topic(1, "это пиздец");
+        insertSugarTopic(t);
+
+        String[] s = {"konung","olaf","morzoviy","her"};
+        for(int i = 0;i < 4;i++) {
+            Word w = new Word(0,new Description(0,"description"),null,t,s[i],false);
+            insertSugarWord(w);
+        }
+    }*/
 
 }
 

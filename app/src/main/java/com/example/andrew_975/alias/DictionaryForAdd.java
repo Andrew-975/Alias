@@ -6,15 +6,15 @@ import java.util.ArrayList;
  * Created by Ira on 02.06.2015.
  */
 public class DictionaryForAdd {
-    private String name;
+    private String topic;
     private ArrayList<String> words;
 
     public DictionaryForAdd(String name,ArrayList<String> words){
-        this.name = name;
+        this.topic = topic;
         this.words = words;
     }
-    public String getName(){
-        return name;
+    public String getTopic(){
+        return topic;
     }
 
 }

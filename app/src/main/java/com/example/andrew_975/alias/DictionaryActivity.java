@@ -65,11 +65,10 @@ public class DictionaryActivity extends ActionBarActivity {
         startActivity(intent);
     }
 
-
     public ArrayList<String> dictsNames(){
         ArrayList<String> s = new ArrayList<String>();
         for(int i = 0; i < dicts.size();i++){
-            s.add(dicts.get(i).getName());
+            s.add(dicts.get(i).getTopic());
         }
         return s;
     }

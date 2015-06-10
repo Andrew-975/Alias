@@ -9,6 +9,8 @@ import android.util.Log;
 import com.example.andrew_975.alias.entities.Topic;
 import com.example.andrew_975.alias.entities.Word;
 
+import java.util.List;
+
 /**
  * Created by Yohan on 10.05.2015.
  */
@@ -51,8 +53,8 @@ public class TopicQ {
     public static void deleteTopic(Topic book, Context context) {
         SQLiteDatabase db = new Database(context).getWritableDatabase();
         db.delete(Constants.TOPIC_TABLE_NAME, //table name
-                Constants.TOPIC_ID+" = ?",  // selections
-                new String[] { String.valueOf(book.getTopicId()) }); //selections args
+                Constants.TOPIC_ID + " = ?",  // selections
+                new String[]{String.valueOf(book.getTopicId())}); //selections args
         db.close();
         //log
         Log.d("deleteWord", book.toString());
@@ -96,8 +98,12 @@ public class TopicQ {
         oldDescr.save();
     }
 
-    public static void deleteSugarTopic(long id) {
+    public static void deleteSugarTopicT(long id) {
         Topic description = Topic.findById(Topic.class,id);
         description.delete();
+    }
+
+    public static List<Topic> getAllSugarTopics() {
+        return Topic.listAll(Topic.class);
     }
 }

@@ -3,6 +3,7 @@ package com.example.andrew_975.alias;
 import com.example.andrew_975.alias.entities.Game;
 import com.example.andrew_975.alias.entities.Parametres;
 import com.example.andrew_975.alias.entities.Team;
+import com.example.andrew_975.alias.entities.Topic;
 
 import java.util.ArrayList;
 
@@ -17,5 +18,7 @@ public class Exchange {
 
 
     //public static ArrayList<DictionaryForAdd> dicts;
-    public static DictionaryForAdd dictionary;
+    public static Topic dictionary;
+    public static int CurrentTopicId;
+    public static int lastId;
 }

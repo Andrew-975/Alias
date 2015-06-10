@@ -7,6 +7,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import static com.example.andrew_975.alias.sqlite.TopicQ.deleteSugarTopicT;
+import static com.example.andrew_975.alias.sqlite.WordQ.deleteSugarTopic;
+
 public class MainActivity extends ActionBarActivity {
 
    @Override

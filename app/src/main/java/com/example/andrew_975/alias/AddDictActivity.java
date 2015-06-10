@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.example.andrew_975.alias.entities.Topic;
+
 import java.util.ArrayList;
 
 
@@ -68,7 +70,7 @@ public class AddDictActivity extends ActionBarActivity {
 
     public void onClickBackToDict(View view) {
         Intent intent = new Intent(AddDictActivity.this, DictionaryActivity.class);
-        Exchange.dictionary = new DictionaryForAdd(name,words);
+        //Exchange.dictionary = new Topic(name);
         startActivity(intent);
     }
 

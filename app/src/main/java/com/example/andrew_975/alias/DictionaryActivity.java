@@ -6,21 +6,23 @@ import java.util.Collections;
 import java.util.List;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
-import android.view.ViewGroup;
 import android.widget.ListView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.andrew_975.alias.entities.Topic;
+
+import static com.example.andrew_975.alias.sqlite.TopicQ.getAllSugarTopics;
+import static com.example.andrew_975.alias.sqlite.TopicQ.insertSugarTopic;
+
 
 public class DictionaryActivity extends ActionBarActivity {
 
-    ArrayList<DictionaryForAdd> dicts = new ArrayList<DictionaryForAdd>();
+    ArrayList<Topic> dicts = new ArrayList<Topic>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,16 +70,29 @@ public class DictionaryActivity extends ActionBarActivity {
     public ArrayList<String> dictsNames(){
         ArrayList<String> s = new ArrayList<String>();
         for(int i = 0; i < dicts.size();i++){
-            s.add(dicts.get(i).getTopic());
+            s.add(dicts.get(i).getTopicText());
         }
         return s;
     }
     public void fillDicts(){
-        for(int i = 0;i < 3;i++){
+        /*for(int i = 0;i < 3;i++){
             ArrayList<String> s = new ArrayList<String>(Arrays.asList("kokoko","rrrrr","jhgfcjyhgc"));
             DictionaryForAdd d = new DictionaryForAdd("selech",s);
             dicts.add(d);
+        }*/
+        //ArrayList<String> s = new ArrayList<String>(Arrays.asList("kokoko","rrrrr","jhgfcjyhgc"));
+        Topic t = new Topic(0,"topic");
+        insertSugarTopic(t);
+        List<Topic> allTopics = getAllSugarTopics();
+        for(int i = 0;i < allTopics.size();i++){
+            //DictionaryForAdd d = new DictionaryForAdd(allTopics.get(i).getTopicText());
+            dicts.add(allTopics.get(i));
         }
+        /*List<Word> allWords = getAllSugarWords();
+        for(int i = 0;i < allWords.size();i++) {
+
+        }*/
+
     }
 
     public void onClickBack(View view) {

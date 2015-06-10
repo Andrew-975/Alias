@@ -161,7 +161,6 @@ public class WordQ {
         Word description = Word.findById(Word.class,id);
         description.delete();
     }
-
     public static List<Word> getAllSugarWords() {
         return Word.listAll(Word.class);
     }

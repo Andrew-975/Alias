@@ -132,6 +132,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.andrew_975.alias.GameActivity" />
         </activity>
+        <activity
+            android:name=".TurnStat"
+            android:label="@string/title_activity_turn_stat" >
+        </activity>
+        <activity
+            android:name=".RoundStat"
+            android:label="@string/title_activity_round_stat" >
+        </activity>
     </application>
 
 </manifest>

@@ -32,7 +32,7 @@ public class RoundStat extends ActionBarActivity {
 
         listView1.setAdapter(adapter1c);
 
-        
+
     }
 
     @Override

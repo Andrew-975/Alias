@@ -58,4 +58,6 @@
     <string name="title_activity_swipe_list_view">SwipeListView</string>
     <string name="title_activity_test">Test</string>
     <string name="title_activity_team_s">TeamSet</string>
+    <string name="title_activity_turn_stat">TurnStat</string>
+    <string name="title_activity_round_stat">RoundStat</string>
 </resources>

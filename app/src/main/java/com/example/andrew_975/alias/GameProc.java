@@ -38,7 +38,7 @@ public class GameProc extends ActionBarActivity {
             while (myProgress < 100) {
                 try {
                     myHandle.sendMessage(myHandle.obtainMessage());
-                    Thread.sleep(1000);
+                    Thread.sleep(50);
                 } catch (Throwable t) {
                 }
             }

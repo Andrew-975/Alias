@@ -1,9 +1,11 @@
 package com.example.andrew_975.alias;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
 public class TurnStat extends ActionBarActivity {
@@ -34,5 +36,10 @@ public class TurnStat extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onClickStartRound(View view) {
+        Intent intent = new Intent(TurnStat.this, GameProc.class);
+        startActivity(intent);
     }
 }

@@ -13,7 +13,9 @@
         android:id="@+id/teamListLastRound"
         android:layout_below="@+id/textView29"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <ListView
         android:layout_width="300dp"
@@ -21,7 +23,9 @@
         android:id="@+id/teamListAll"
         android:layout_below="@+id/textView30"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/teamListLastRound"
+        android:layout_alignEnd="@+id/teamListLastRound" />
 
     <Button
         android:layout_width="wrap_content"
@@ -30,7 +34,8 @@
         android:id="@+id/button8"
         android:textSize="20dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="onClickEndRoundStatistic" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -66,24 +71,6 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="20dp" />
-
-    <ListView
-        android:layout_width="40dp"
-        android:layout_height="150dp"
-        android:id="@+id/countListLastRound"
-        android:layout_alignTop="@+id/teamListLastRound"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:headerDividersEnabled="true" />
-
-    <ListView
-        android:layout_width="40dp"
-        android:layout_height="150dp"
-        android:id="@+id/countListAll"
-        android:headerDividersEnabled="true"
-        android:layout_alignTop="@+id/teamListAll"
-        android:layout_toRightOf="@+id/textView29"
-        android:layout_toEndOf="@+id/textView29" />
 
     <TextView
         android:layout_width="wrap_content"

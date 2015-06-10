@@ -26,7 +26,6 @@
             android:label="Alias" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -101,14 +100,6 @@
             android:label="@string/title_activity_game_proc" >
         </activity>
         <activity
-            android:name=".EndRound"
-            android:label="@string/title_activity_end_round"
-            android:parentActivityName=".GameProc" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.andrew_975.alias.GameProc" />
-        </activity>
-        <activity
             android:name=".HowToPlayActivity"
             android:label="@string/title_activity_how_to_play"
             android:parentActivityName=".MainActivity" >
@@ -123,14 +114,6 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.andrew_975.alias.DictionaryActivity" />
-        </activity>
-        <activity
-            android:name=".TeamS"
-            android:label="@string/title_activity_team_s"
-            android:parentActivityName=".GameActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.andrew_975.alias.GameActivity" />
         </activity>
         <activity
             android:name=".TurnStat"

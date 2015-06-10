@@ -45,7 +45,7 @@ public class WordStatistic extends ActionBarActivity {
     }
 
     public void onClickNextTurn (View view) {
-        Intent intent = new Intent(WordStatistic.this, EndRound.class);
+        Intent intent = new Intent(WordStatistic.this, RoundStat.class);
         startActivity(intent);
     }
 }

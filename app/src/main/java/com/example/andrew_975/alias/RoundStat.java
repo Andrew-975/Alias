@@ -1,10 +1,12 @@
 package com.example.andrew_975.alias;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.test.suitebuilder.annotation.LargeTest;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -23,8 +25,6 @@ public class RoundStat extends ActionBarActivity {
         ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this,	android.R.layout.simple_list_item_1, teams);
 
         listView1.setAdapter(adapter1);
-
-        ListView listView1c = (ListView)findViewById(R.id.countListLastRound);
 
         final String[] count1 = new String[] {"Team1", "Team2", "Team3"};
 
@@ -55,5 +55,10 @@ public class RoundStat extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onClickEndRoundStatistic(View view) {
+        Intent intent = new Intent(RoundStat.this, TurnStat.class);
+        startActivity(intent);
     }
 }

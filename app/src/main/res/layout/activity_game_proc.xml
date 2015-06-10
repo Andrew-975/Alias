@@ -68,7 +68,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:onClick="onClickProcToMain" />
+        android:onClick="onClickProcToMain"
+        android:visibility="invisible" />
 
     <ProgressBar
         style="?android:attr/progressBarStyleHorizontal"

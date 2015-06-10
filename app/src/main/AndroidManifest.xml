@@ -132,6 +132,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.andrew_975.alias.GameActivity" />
         </activity>
+        <activity
+            android:name=".WordStatistic"
+            android:label="@string/title_activity_word_statistic" >
+        </activity>
     </application>
 
 </manifest>

@@ -26,25 +26,14 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Настроить команды"
-        android:id="@+id/button"
-        android:layout_marginTop="41dp"
-        android:textSize="20dp"
-        android:layout_below="@+id/game"
-        android:layout_centerHorizontal="true"
-        android:nestedScrollingEnabled="false"
-        android:onClick="onClickEditTeams" />
-
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/spinner"
-        android:layout_below="@+id/button"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/game"
+        android:layout_marginTop="50dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -83,22 +72,22 @@
         android:layout_height="wrap_content"
         android:id="@+id/seekBar"
         android:layout_below="@+id/raund"
-        android:layout_alignRight="@+id/raund"
-        android:layout_alignEnd="@+id/raund"
-        android:layout_alignLeft="@+id/raund"
-        android:layout_alignStart="@+id/raund"
         android:longClickable="false"
-        android:max="200" />
+        android:max="200"
+        android:layout_alignRight="@+id/spinner"
+        android:layout_alignEnd="@+id/spinner"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <SeekBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/seekBar2"
         android:layout_below="@+id/limit"
-        android:layout_alignLeft="@+id/limit"
-        android:layout_alignStart="@+id/limit"
         android:layout_alignRight="@+id/seekBar"
         android:layout_alignEnd="@+id/seekBar"
-        android:max="100" />
+        android:max="100"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

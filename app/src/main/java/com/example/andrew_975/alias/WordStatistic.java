@@ -7,18 +7,25 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-public class MainActivity extends ActionBarActivity {
+import com.example.andrew_975.alias.entities.GameWord;
 
-   @Override
+import java.util.ArrayList;
+
+
+public class WordStatistic extends ActionBarActivity {
+    public String nameTeam;
+    public ArrayList<GameWord> gameWords;
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_word_statistic);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_word_statistic, menu);
         return true;
     }
 
@@ -37,26 +44,8 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void onClickDict(View view) {
-            Intent intent = new Intent(MainActivity.this, DictionaryActivity.class);
-            startActivity(intent);
-        }
-    public void onClickSettings(View view) {
-        Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+    public void onClickNextTurn (View view) {
+        Intent intent = new Intent(WordStatistic.this, EndRound.class);
         startActivity(intent);
     }
-    public void onClickAbout(View view) {
-        Intent intent = new Intent(MainActivity.this, AboutActivity.class);
-        startActivity(intent);
-    }
-    public void onClickGame(View view) {
-        Intent intent = new Intent(MainActivity.this, TeamS.class);
-        startActivity(intent);
-    }
-    public void onClickHowToPlay(View view) {
-        Intent intent = new Intent(MainActivity.this, HowToPlayActivity.class);
-        startActivity(intent);
-    }
-
 }
-

@@ -47,10 +47,7 @@ public class Round{
     }
 
     public void start(){
-        while (!isTimeToStop()){
-            newTurn();
-        }
-        stop();
+        newTurn();
     }
 
     public boolean newTurn(){

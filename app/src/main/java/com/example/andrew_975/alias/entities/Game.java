@@ -57,10 +57,7 @@ public class Game{
     }
 
     public void start(){
-        while (!isTimeToStop()){
-            startNewRound();
-        }
-        stop();
+        startNewRound();
     }
 
     private boolean startNewRound(){

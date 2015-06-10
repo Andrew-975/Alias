@@ -40,22 +40,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Неудач:     8"
-        android:id="@+id/textView17"
+        android:text="Следующая команда:"
+        android:id="@+id/textView18"
+        android:layout_marginTop="108dp"
         android:layout_below="@+id/textView16"
         android:layout_alignLeft="@+id/textView16"
         android:layout_alignStart="@+id/textView16" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Следующая команда:"
-        android:id="@+id/textView18"
-        android:layout_below="@+id/textView17"
-        android:layout_alignLeft="@+id/textView17"
-        android:layout_alignStart="@+id/textView17"
-        android:layout_marginTop="108dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -75,7 +65,9 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="37dp"
-        android:onClick="onClickStartAgain" />
+        android:onClick="onClickStartAgain"
+        android:height="30dp"
+        android:width="80dp" />
 
     <ImageButton
         android:layout_width="50dp"

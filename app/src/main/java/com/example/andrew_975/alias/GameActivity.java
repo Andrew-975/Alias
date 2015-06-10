@@ -119,7 +119,7 @@ public class GameActivity extends ActionBarActivity {
     }
     public void onClickGameStart(View view) {
         startGame();
-        Intent intent = new Intent(GameActivity.this, GameProc.class);
+        Intent intent = new Intent(GameActivity.this, EndRound.class);
         startActivity(intent);
     }
     public void onClickEditTeams(View view) {

@@ -96,7 +96,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="0"
         android:id="@+id/textView12"
-        android:width="30dp"
+        android:width="60dp"
         android:layout_below="@+id/spinner"
         android:layout_toRightOf="@+id/raund"
         android:layout_toEndOf="@+id/raund"
@@ -108,9 +108,8 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="0"
         android:id="@+id/textView14"
-        android:width="30dp"
+        android:width="60dp"
         android:layout_above="@+id/seekBar2"
-        android:layout_alignRight="@+id/button2"
-        android:layout_alignEnd="@+id/button2" />
+        android:layout_toStartOf="@+id/textView12" />
 
 </RelativeLayout>

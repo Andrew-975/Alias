@@ -19,18 +19,16 @@ public class RoundStat extends ActionBarActivity {
         setContentView(R.layout.activity_round_stat);
 
         ListView listView1 = (ListView)findViewById(R.id.teamListLastRound);
+        ListView listView2 = (ListView)findViewById(R.id.teamListAll);
 
         final String[] teams = new String[] {"Team1", "Team2", "Team3"};
 
         ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this,	android.R.layout.simple_list_item_1, teams);
 
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this,	android.R.layout.simple_list_item_1, teams);
+
         listView1.setAdapter(adapter1);
-
-        final String[] count1 = new String[] {"Team1", "Team2", "Team3"};
-
-        ArrayAdapter<String> adapter1c = new ArrayAdapter<String>(this,	android.R.layout.simple_list_item_1, count1);
-
-        listView1.setAdapter(adapter1c);
+        listView2.setAdapter(adapter2);
 
 
     }

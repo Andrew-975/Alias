@@ -84,7 +84,7 @@ public class MainActivity extends ActionBarActivity {
         startActivity(intent);
     }
     public void onClickGame(View view) {
-        Intent intent = new Intent(MainActivity.this, GameActivity.class);
+        Intent intent = new Intent(MainActivity.this, TeamS.class);
         startActivity(intent);
     }
     public void onClickHowToPlay(View view) {

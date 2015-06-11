@@ -8,19 +8,18 @@ import android.view.MenuItem;
 import android.view.View;
 
 
-public class EndRound extends ActionBarActivity {
+public class TurnStat extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_end_round);
+        setContentView(R.layout.activity_turn_stat);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_end_round, menu);
+        getMenuInflater().inflate(R.menu.menu_turn_stat, menu);
         return true;
     }
 
@@ -39,12 +38,8 @@ public class EndRound extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void onClickStartAgain(View view) {
-        Intent intent = new Intent(EndRound.this, GameProc.class);
-        startActivity(intent);
-    }
-    public void onClickEndRoundToMain(View view) {
-        Intent intent = new Intent(EndRound.this, MainActivity.class);
+    public void onClickStartRound(View view) {
+        Intent intent = new Intent(TurnStat.this, GameProc.class);
         startActivity(intent);
     }
 }

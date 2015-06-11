@@ -26,35 +26,16 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-    <ImageView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:id="@+id/imageView"
-        android:src="@drawable/clock"
-        android:layout_below="@+id/textView10"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="30 sec"
-        android:id="@+id/textView12"
-        android:layout_below="@+id/imageView"
-        android:layout_centerHorizontal="true"
-        android:textSize="40dp" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Инкапсуляция"
         android:id="@+id/textView13"
-        android:layout_marginTop="79dp"
-        android:layout_below="@+id/imageView"
-        android:layout_centerHorizontal="true"
         android:textStyle="bold"
-        android:typeface="sans" />
+        android:typeface="sans"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
     <ImageButton
         android:layout_width="50dp"
@@ -62,11 +43,11 @@
         android:id="@+id/imageButton6"
         android:clickable="true"
         android:background="@drawable/ok"
-        android:onClick="onClickEndRound"
-        android:layout_marginTop="49dp"
-        android:layout_below="@+id/textView13"
-        android:layout_alignLeft="@+id/textView13"
-        android:layout_alignStart="@+id/textView13" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="100dp"
+        android:layout_marginBottom="50dp" />
 
     <ImageButton
         android:layout_width="50dp"
@@ -74,10 +55,10 @@
         android:id="@+id/imageButton7"
         android:background="@drawable/delete"
         android:clickable="true"
-        android:onClick="onClickEndRound"
         android:layout_alignTop="@+id/imageButton6"
-        android:layout_alignRight="@+id/textView13"
-        android:layout_alignEnd="@+id/textView13" />
+        android:layout_toRightOf="@+id/imageButton6"
+        android:layout_toEndOf="@+id/imageButton6"
+        android:layout_marginLeft="60dp" />
 
     <ImageButton
         android:layout_width="50dp"
@@ -87,6 +68,19 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:onClick="onClickProcToMain" />
+        android:onClick="onClickProcToMain"
+        android:visibility="invisible" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar2"
+        android:layout_below="@+id/imageButton8"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:minHeight="30dp" />
 
 </RelativeLayout>

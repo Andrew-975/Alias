@@ -4,40 +4,57 @@ import java.util.Timer;
 import java.util.TimerTask;
 import android.content.res.Resources;
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.andrew_975.alias.entities.Turn;
 
 
 public class GameProc extends ActionBarActivity {
-
-    int a;
-    private Timer mTimer;
-    private MyTimerTask mMyTimerTask;
-    private TextView tV;
+    ProgressBar myProgressBar;
+    int myProgress = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_proc);
 
-        tV = (TextView) findViewById(R.id.textView12);
-        if (mTimer != null) {
-            mTimer.cancel();
-        }
-        mTimer = new Timer();
-        mMyTimerTask = new MyTimerTask();
+        myProgressBar = (ProgressBar) findViewById(R.id.progressBar2);
 
-        a = 30;
-        mTimer.schedule(mMyTimerTask, 1000, 1000);
-
+        new Thread(myThread).start();
         //public Turn turn = new Turn(playingTeam, parametres);
     }
 
+    private Runnable myThread = new Runnable() {
+        @Override
+        public void run() {
+            // TODO Auto-generated method stub
+            while (myProgress < 100) {
+                try {
+                    myHandle.sendMessage(myHandle.obtainMessage());
+                    Thread.sleep(50);
+                } catch (Throwable t) {
+                }
+            }
+            Intent intent = new Intent(GameProc.this, WordStatistic.class);
+            startActivity(intent);
+        }
+
+        Handler myHandle = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                // TODO Auto-generated method stub
+                myProgress++;
+                myProgressBar.setProgress(myProgress);
+            }
+        };
+    };
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -59,31 +76,6 @@ public class GameProc extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-    public void onClickEndRound(View view) {
-        Intent intent = new Intent(GameProc.this, EndRound.class);
-        startActivity(intent);
-    }
-    public void onClickProcToMain (View view){
-        Intent intent = new Intent(GameProc.this, MainActivity.class);
-        startActivity(intent);
-    }
-    class MyTimerTask extends TimerTask {
-
-        @Override
-        public void run() {
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    tV.setText("" + a + " sec");
-                    if (a == 0) {
-                        mTimer.cancel();
-                        mTimer = null;
-                    }
-                    a--;
-                }
-            });
-        }
     }
 }
 

@@ -1,6 +1,14 @@
 package com.example.andrew_975.alias.entities;
 
+import com.example.andrew_975.alias.Exchange;
+
 import java.util.ArrayList;
+import java.util.List;
+
+import static com.example.andrew_975.alias.sqlite.TopicQ.getAllSugarTopics;
+import static com.example.andrew_975.alias.sqlite.TopicQ.getSugarTopic;
+import static com.example.andrew_975.alias.sqlite.WordQ.getAllSugarWords;
+import static com.example.andrew_975.alias.sqlite.WordQ.getSugarWord;
 
 /**
  * Created by Andrew_975 on 13.05.2015.
@@ -92,13 +100,16 @@ public class Turn{
 
     // TODO
     GameWord suggestNewWord(){
-        GameWord result;
 
-        //result = new GameWord(parametres.getWordCollection().getRandomWordExcept(indexesOfAlreadyAppearedWords));
-        result = new GameWord(new Word());
-        _gameWords.add(result);
-        _currWordCount++;
-        //showWord(current);
+        List<Word> allWords = getAllSugarWords();
+        Word w = new Word(0, new Description(0, "description"), null, getSugarTopic(Exchange.CurrentTopicId),"хрень",false);
+        for(int i = 0;i < allWords.size();i++) {
+            if (allWords.get(i).getTopic().getTopicId() == Exchange.CurrentTopicId) {
+                w = allWords.get(i);
+            }
+        }
+        GameWord result = new GameWord(w,GameWord.NEUTRAL_STATUS);
+
         return result;
     }
 

@@ -22,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.andrew_975.alias.entities.Topic;
+import com.example.andrew_975.alias.sqlite.TopicQ;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -87,7 +88,8 @@ public class MyAdapter extends BaseAdapter implements ListAdapter {
                             deleteSugarTopic(l);
                             Exchange.lastTopicId --;
                             for(int j = 0;j < allTopics.size()-1;j++){
-
+                                Topic top = new Topic(i,allTopics.get(i).getTopicText());
+                                TopicQ.updateSugarTopic(top);
                             }
                         }
                     }
@@ -112,7 +114,7 @@ public class MyAdapter extends BaseAdapter implements ListAdapter {
                                    Exchange.CurrentTopicId = l;
                                }
                            }
-                           Exchange.CurrentTopicId = ((DictionaryActivity) context).getTopicfromList(name).getTopicId();
+                          // Exchange.CurrentTopicId = ((DictionaryActivity) context).getTopicfromList(name).getTopicId();
                        }
                    }
 

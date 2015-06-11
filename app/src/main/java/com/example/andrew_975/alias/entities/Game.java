@@ -6,6 +6,8 @@ import java.util.ArrayList;
  * Created by Andrew_975 on 12.05.2015.
  */
 public class Game{
+    private static final String NO_TEAM_NAME = "NO_TEAM_NAME";
+
     ArrayList<Team> _teams;
     Parametres _parametres;
     ArrayList<Round> _rounds;
@@ -38,11 +40,77 @@ public class Game{
         return _statistics;
     }
 
+    public int getTurnLengthSeconds(){
+        return _parametres.getTurnLengthSeconds();
+    }
+
+    public int getNumberWordsToWin(){
+        return _parametres.getNumberWordsToWin();
+    }
+
     public Round getCurrentRound(){
+        if(_rounds == null){
+            return null;
+        }
         if((_roundCount >= _rounds.size()) || (_roundCount < 0)){
             return null;
         }
         return _rounds.get(_roundCount);
+    }
+
+    public Turn getCurrentTurn(){
+        Round round = getCurrentRound();
+        if(round == null){
+            return null;
+        }
+        return round.getCurrentTurn();
+    }
+
+    public String getCurrentTeamName(){
+        int teamIndex = getTurnCount() - 1;
+        if(teamIndex < 0){
+            if((_teams == null) || (_teams.size() == 0)){
+                return NO_TEAM_NAME;
+            }
+            return _teams.get(0).getName();
+        }
+        return getTeamName(teamIndex);
+    }
+
+    public String getTeamName(int teamIndex){
+        if(_teams == null){
+            return NO_TEAM_NAME;
+        }
+        if((teamIndex >= _teams.size()) || (teamIndex < 0)){
+            return NO_TEAM_NAME;
+        }
+        return _teams.get(teamIndex).getName();
+    }
+
+    public ArrayList<String> getAllTeamNames(){
+        ArrayList<String> result = new ArrayList<String>();
+
+        if((_teams == null) || (_teams.size() == 0)){
+            return result;
+        }
+        for(Team team : _teams){
+            result.add(team.getName());
+        }
+        return result;
+    }
+
+    public int getRoundCount(){
+        if(_rounds == null){
+            return -1;
+        }
+        return _rounds.size();
+    }
+
+    public int getTurnCount(){
+        if(_rounds == null){
+            return -1;
+        }
+        return getCurrentRound().getTurnCount();
     }
 
     private boolean addToStatistics(int[] roundStatistics){
@@ -107,6 +175,6 @@ public class Game{
         if(index == -1){
             return "";
         }
-        return _teams.get(index).getTemName();
+        return _teams.get(index).getName();
     }
 }

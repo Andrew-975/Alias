@@ -41,7 +41,7 @@ public class Team extends SugarRecord<Team> {
         return points;
     }
 
-    public String getTemName() {
+    public String getName() {
         return temName;
     }
 }

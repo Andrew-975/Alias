@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class TurnStat extends ActionBarActivity {
 
     private static final String ROUND = "Раунд";
-    private static final String GAME = "�?гра";
+    private static final String GAME = "�?гра";
     private static final String DOT = " .";
 
     @Override
@@ -30,7 +30,7 @@ public class TurnStat extends ActionBarActivity {
         curTurnText.setText(ROUND + Exchange.game.getRoundCount() + DOT + GAME + Exchange.game.getTurnCount());
         curTeamState.setText(Exchange.game.getCurrentTeamName());
 
-        ListView listView1 = (ListView)findViewById(listTeams);
+        ListView listView1 = (ListView)findViewById(R.id.listView3);
 
         ArrayList<String> arrayList = Exchange.game.getAllTeamNames();
         final String [] teams = new String[arrayList.size()];

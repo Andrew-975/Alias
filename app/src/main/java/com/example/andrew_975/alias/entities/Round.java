@@ -36,10 +36,20 @@ public class Round{
     }
 
     public Turn getCurrentTurn(){
+        if(_turns == null){
+            return null;
+        }
         if((_turnCount >= _turns.size()) || (_turnCount < 0)){
             return null;
         }
         return _turns.get(_turnCount);
+    }
+
+    public int getTurnCount(){
+        if(_turns == null){
+            return -1;
+        }
+        return _turns.size();
     }
 
     private boolean isTimeToStop(){

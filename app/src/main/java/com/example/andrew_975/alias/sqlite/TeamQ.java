@@ -41,7 +41,7 @@ public class TeamQ {
         SQLiteDatabase db = new Database(context).getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(Constants.TEAM_ID, team.getTeamId()); // get title
-        values.put(Constants.TEAM_NAME, team.getTemName());
+        values.put(Constants.TEAM_NAME, team.getName());
         values.put(Constants.TEAM_POINTS, team.getPoints());
         db.insert(Constants.TEAM_TABLE_NAME, // table
                 null, //nullColumnHack
@@ -67,7 +67,7 @@ public class TeamQ {
         // 2. create ContentValues to add key "column"/value
         ContentValues values = new ContentValues();
         values.put(Constants.TEAM_ID, team.getTeamId()); // get title
-        values.put(Constants.TEAM_NAME, team.getTemName());
+        values.put(Constants.TEAM_NAME, team.getName());
         values.put(Constants.TEAM_POINTS, team.getPoints());
 
         // 3. updating row
@@ -94,7 +94,7 @@ public class TeamQ {
     public static void updateSugarTeam(Team description) {
         Team oldDescr = Team.findById(
                 Team.class,(long)description.getTeamId());
-        oldDescr.setTeamName(description.getTemName());
+        oldDescr.setTeamName(description.getName());
         oldDescr.setPoints(description.getPoints());
         oldDescr.save();
     }

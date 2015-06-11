@@ -6,14 +6,25 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 
 public class TurnStat extends ActionBarActivity {
+
+    private static final String ROUND = "Раунд";
+    private static final String GAME = "Игра";
+    private static final String DOT = " .";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_turn_stat);
+
+        TextView curTurnText = (TextView) findViewById(R.id.currentTurn);
+        TextView curTeamState = (TextView) findViewById(R.id.currentTeam);
+
+        curTurnText.setText(ROUND + Exchange.game.getRoundCount() + DOT + GAME + Exchange.game.getTurnCount());
+        curTeamState.setText(Exchange.game.getCurrentTeamName());
     }
 
     @Override

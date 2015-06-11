@@ -30,7 +30,7 @@ public class TurnStat extends ActionBarActivity {
         curTurnText.setText(ROUND + Exchange.game.getRoundCount() + DOT + GAME + Exchange.game.getTurnCount());
         curTeamState.setText(Exchange.game.getCurrentTeamName());
 
-        ListView listView1 = (ListView)findViewById(listTeams);
+        ListView listView1 = (ListView)findViewById(R.id.listTeams);
 
         ArrayList<String> arrayList = Exchange.game.getAllTeamNames();
         final String [] teams = new String[arrayList.size()];

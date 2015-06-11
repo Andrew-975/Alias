@@ -1,11 +1,14 @@
 package com.example.andrew_975.alias;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.example.andrew_975.alias.entities.GameWord;
 
@@ -20,6 +23,16 @@ public class WordStatistic extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_word_statistic);
+        Resources res = getResources();
+        //nameTeam = Exchange
+        gameWords.addAll(Exchange.game.getCurrentRound().getCurrentTurn().getListOfWords());
+
+        InteractiveArrayAdapter adapter = new InteractiveArrayAdapter(gameWords, this, false);
+        final ListView list = (ListView) findViewById(R.id.listView3);
+        list.setAdapter(adapter);
+        /*InteractiveArrayAdapter adapter = new InteractiveArrayAdapter(this,
+                getModel());
+        list.setListAdapter(adapter);*/
     }
 
     @Override

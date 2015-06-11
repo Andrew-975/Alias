@@ -19,7 +19,7 @@ public class GameWord{
         this(word, NEUTRAL_STATUS);
     }
 
-    String getInUppercase(){
+    public String getInUppercase(){
         //return ToUpperCase(_word.getWordText());
         String result = new String(_word.getWordText());
 
@@ -27,7 +27,7 @@ public class GameWord{
         return result;
     }
 
-    String getInLowercase(){
+    public String getInLowercase(){
         //return ToLowerCase(_word.getWordText());
         String result = new String(_word.getWordText());
 

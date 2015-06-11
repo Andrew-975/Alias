@@ -86,7 +86,7 @@ public class InteractiveArrayAdapter extends BaseAdapter implements ListAdapter 
         ImageButton falseBtn = (ImageButton)view.findViewById(R.id.fal);
         ImageButton newtBtn = (ImageButton)view.findViewById(R.id.newt);
 
-        trBtn.setOnClickListener(new View.OnClickListener(){
+        falseBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 //do something
@@ -105,7 +105,7 @@ public class InteractiveArrayAdapter extends BaseAdapter implements ListAdapter 
                 notifyDataSetChanged();
             }
         });
-        falseBtn.setOnClickListener(new View.OnClickListener(){
+        trBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 //do something

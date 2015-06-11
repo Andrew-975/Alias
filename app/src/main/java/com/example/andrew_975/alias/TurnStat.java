@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class TurnStat extends ActionBarActivity {
 
     private static final String ROUND = "Раунд";
-    private static final String GAME = "�?гра";
+    private static final String GAME = "Игра";
     private static final String DOT = " .";
 
     @Override

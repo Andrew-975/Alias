@@ -6,6 +6,7 @@ import android.content.res.Resources;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.widget.ExploreByTouchHelper;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -20,6 +21,7 @@ import com.example.andrew_975.alias.entities.Turn;
 public class GameProc extends ActionBarActivity {
     ProgressBar myProgressBar;
     int myProgress = 0;
+    TextView gameWord;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,11 +29,12 @@ public class GameProc extends ActionBarActivity {
 
         myProgressBar = (ProgressBar) findViewById(R.id.progressBar2);
 
+        gameWord = (TextView) findViewById(R.id.gameWordCurrent);
         new Thread(myThread).start();
         //public Turn turn = new Turn(playingTeam, parametres);
 
         TextView teamName = (TextView) findViewById(R.id.gameProcTeamName);
-        TextView gameWord = (TextView) findViewById(R.id.gameWord);
+        //gameWord = (TextView) findViewById(R.id.gameWordCurrent);
 
         teamName.setText(Exchange.game.getCurrentTeamName());
         gameWord.setText(Exchange.game.getCurrentTurn().suggestNewWord().getInLowercase());
@@ -44,7 +47,7 @@ public class GameProc extends ActionBarActivity {
             while (myProgress < 100) {
                 try {
                     myHandle.sendMessage(myHandle.obtainMessage());
-                    Thread.sleep(50);
+                    Thread.sleep(Exchange.game.getTurnLengthSeconds() * 10);
                 } catch (Throwable t) {
                 }
             }
@@ -62,6 +65,24 @@ public class GameProc extends ActionBarActivity {
         };
     };
 
+    private final Runnable mUpdateUITimerTask = new Runnable() {
+        public void run() {
+            // do whatever you want to change here, like:
+            Exchange.game.getCurrentTurn().getCurrentWord().markGuessed();
+            gameWord.setText(Exchange.game.getCurrentTurn().suggestNewWord().getInLowercase());
+        }
+    };
+    private final Runnable mUpdateUITimerTask1 = new Runnable() {
+        public void run() {
+            // do whatever you want to change here, like:
+            Exchange.game.getCurrentTurn().getCurrentWord().markUnguessed();
+            gameWord.setText(Exchange.game.getCurrentTurn().suggestNewWord().getInLowercase());
+        }
+    };
+
+    private final Handler mHandler11 = new Handler();
+
+    private final Handler mHandler1 = new Handler();
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -69,6 +90,13 @@ public class GameProc extends ActionBarActivity {
         return true;
     }
 
+    public void onClickApprove(View view) {
+        mHandler1.postDelayed(mUpdateUITimerTask, 0);
+    }
+
+    public void onClickDecline(View view) {
+        mHandler11.postDelayed(mUpdateUITimerTask1, 0);
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will

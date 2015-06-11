@@ -38,7 +38,7 @@ public class WordStatistic extends ActionBarActivity {
         InteractiveArrayAdapter adapter = new InteractiveArrayAdapter(this, false);
         final ListView list = (ListView) findViewById(R.id.listView3);
         list.setAdapter(adapter);
-        bt8.setText("Количество верных: " + Exchange.game.getCurrentTurn().countStatistics());
+        bt8.setText("РЎС‡С‘С‚: " + Exchange.game.getCurrentTurn().countStatistics());
         Exchange.wordStatistic = this;
     }
 
@@ -79,6 +79,6 @@ public class WordStatistic extends ActionBarActivity {
     }
 
     public void changeVal(int num) {
-        bt8.setText("Количество верных: " + Exchange.game.getCurrentTurn().countStatistics());
+        bt8.setText("РЎС‡С‘С‚: " + Exchange.game.getCurrentTurn().countStatistics());
     }
 }

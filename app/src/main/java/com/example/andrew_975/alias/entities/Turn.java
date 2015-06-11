@@ -22,6 +22,8 @@ public class Turn{
     int _guessedCount;
     int _unguessedCount;
 
+    private static int i = 0;
+
     public Turn(Team playingTeam, Parametres parametres){
         _team = _team;
         _parametres = parametres;
@@ -41,6 +43,13 @@ public class Turn{
         }
         _statistics = result;
         return result;
+    }
+
+    public GameWord getCurrentWord(){
+        if(_gameWords == null){
+            return null;
+        }
+        return _gameWords.get(_gameWords.size() - 1);
     }
 
     public int countNumberOfGuessed(){
@@ -99,27 +108,21 @@ public class Turn{
     }
 
     // TODO
-<<<<<<< HEAD
-    GameWord suggestNewWord(){
-
-        List<Word> allWords = getAllSugarWords();
-        Word w = new Word(0, new Description(0, "description"), null, getSugarTopic(Exchange.CurrentTopicId),"�����",false);
-        for(int i = 0;i < allWords.size();i++) {
-            if (allWords.get(i).getTopic().getTopicId() == Exchange.CurrentTopicId) {
-                w = allWords.get(i);
-            }
-        }
-        GameWord result = new GameWord(w,GameWord.NEUTRAL_STATUS);
-
-=======
     public GameWord suggestNewWord(){
-        GameWord result;
 
-        //result = new GameWord(parametres.getWordCollection().getRandomWordExcept(indexesOfAlreadyAppearedWords));
-        result = new GameWord(new Word());
+//        List<Word> allWords = getAllSugarWords();
+//        Word w = new Word(0, new Description(0, "description"), null, getSugarTopic(Exchange.CurrentTopicId),"�����",false);
+//        for(int i = 0;i < allWords.size();i++) {
+//            if (allWords.get(i).getTopic().getTopicId() == Exchange.CurrentTopicId) {
+//                w = allWords.get(i);
+//            }
+//        }
+        //GameWord result = new GameWord(w,GameWord.NEUTRAL_STATUS);
+        String words[] = new String[] {"инкапсуляция", "наследование", "полиморфизм", "абстракция", "интерфейс"};
+
+        GameWord result = new GameWord(new Word(0, null, null, null, words[i], false));
+        i = (i + 1) % words.length;
         _gameWords.add(result);
-        _currWordCount++;
->>>>>>> 10e0d7bc2f7431687040e0c88d4e3146fe44bd1a
         return result;
     }
 

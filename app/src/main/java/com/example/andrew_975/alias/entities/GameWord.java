@@ -12,7 +12,7 @@ public class GameWord{
     int _guessedStatus;
 
     public GameWord(Word inputWord, int guessedStatus){
-        _word = _word;
+        _word = inputWord;
         _guessedStatus = guessedStatus;
     }
     public GameWord(Word word){

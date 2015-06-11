@@ -91,14 +91,13 @@ public class Turn{
     }
 
     // TODO
-    GameWord suggestNewWord(){
+    public GameWord suggestNewWord(){
         GameWord result;
 
         //result = new GameWord(parametres.getWordCollection().getRandomWordExcept(indexesOfAlreadyAppearedWords));
         result = new GameWord(new Word());
         _gameWords.add(result);
         _currWordCount++;
-        //showWord(current);
         return result;
     }
 

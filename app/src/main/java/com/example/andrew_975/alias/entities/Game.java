@@ -23,12 +23,20 @@ public class Game{
     }
 
     public int[] countStatistics(){
+        if(_teams == null){
+            return null;
+        }
         int[] result = new int[_teams.size()];
 
         for(int team = 0; team < _teams.size(); team++){
             int sum = 0;
             for(int round = 0; round < _rounds.size(); round++){
-                sum += _rounds.get(round).countStatistics()[team];
+                try {
+                    sum += _rounds.get(round).countStatistics()[team];
+                }
+                catch (Exception e){
+                    // Ignore.
+                }
             }
             result[team] = sum;
         }

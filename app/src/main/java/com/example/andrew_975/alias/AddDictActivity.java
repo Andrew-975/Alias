@@ -85,8 +85,8 @@ public class AddDictActivity extends ActionBarActivity {
             Word w = new Word(Exchange.lastWordId,new Description(0,"description"),null,t,words.get(i),false);
             Log.v("mylog","" + "word number:" + Exchange.lastWordId);
             Log.v("mylog","" + "word : " + words.get(i));
-            Exchange.lastWordId++;
             insertSugarWord(w);
+            Exchange.lastWordId++;
         }
         //Exchange.dictionary = new Topic(Exchange.lastId,name);
         startActivity(intent);

@@ -6,13 +6,17 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 
 public class TurnStat extends ActionBarActivity {
 
     private static final String ROUND = "Раунд";
-    private static final String GAME = "Игра";
+    private static final String GAME = "�?гра";
     private static final String DOT = " .";
 
     @Override
@@ -25,6 +29,18 @@ public class TurnStat extends ActionBarActivity {
 
         curTurnText.setText(ROUND + Exchange.game.getRoundCount() + DOT + GAME + Exchange.game.getTurnCount());
         curTeamState.setText(Exchange.game.getCurrentTeamName());
+
+        ListView listView1 = (ListView)findViewById(R.id.listView3);
+
+        ArrayList<String> arrayList = Exchange.game.getAllTeamNames();
+        final String [] teams = new String[arrayList.size()];
+        arrayList.toArray(teams);
+
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this,	android.R.layout.simple_list_item_1, teams);
+
+        listView1.setAdapter(adapter1);
+
+
     }
 
     @Override

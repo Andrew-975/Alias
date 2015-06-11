@@ -1,5 +1,6 @@
 package com.example.andrew_975.alias;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
@@ -14,6 +15,7 @@ import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.app.AlertDialog;
 
 import com.example.andrew_975.alias.entities.Game;
 import com.example.andrew_975.alias.entities.Parametres;
@@ -44,16 +46,16 @@ public class GameActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         t = new TextView(this);
-        t = (TextView)findViewById(R.id.textView12);
+        t = (TextView) findViewById(R.id.textView12);
         t1 = new TextView(this);
-        t1 = (TextView)findViewById(R.id.textView14);
+        t1 = (TextView) findViewById(R.id.textView14);
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.teams, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
-        final SeekBar sk=(SeekBar) findViewById(R.id.seekBar);
+        final SeekBar sk = (SeekBar) findViewById(R.id.seekBar);
         sk.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
             @Override
@@ -70,7 +72,38 @@ public class GameActivity extends ActionBarActivity {
 
                 mHandler1.postDelayed(mUpdateUITimerTask1, 0);
             }
+
         });
+//test of longClick
+        sk.setOnLongClickListener(new View.OnLongClickListener() {
+                                      @Override
+                                      public boolean onLongClick(View view) {
+                                          AlertDialog alertDialog = new AlertDialog.Builder(GameActivity.this).create();
+                                          alertDialog.setTitle("Reset...");
+                                          alertDialog.setMessage("Are you sure?");
+                                          alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+                                              public void onClick(DialogInterface dialog, int which) {
+// here you can add functions
+                                              }
+                                          });
+                                          alertDialog.show();
+                                      return true;}
+                                  }
+
+        );
+        sk.setOnLongClickListener(new View.OnLongClickListener() {
+                                      @Override
+                                      public boolean onLongClick(View view) {
+                                          return false;
+                                      }
+                                  }
+
+        );
+
+
+
+
+
 
         final SeekBar sk1=(SeekBar) findViewById(R.id.seekBar2);
         sk1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -90,6 +123,8 @@ public class GameActivity extends ActionBarActivity {
             }
         });
 
+
+
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
@@ -100,6 +135,7 @@ public class GameActivity extends ActionBarActivity {
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
                 // your code here
+
             }
 
         });
@@ -129,6 +165,7 @@ public class GameActivity extends ActionBarActivity {
         getMenuInflater().inflate(R.menu.menu_game, menu);
         return true;
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

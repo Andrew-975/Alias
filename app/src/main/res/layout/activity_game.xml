@@ -74,10 +74,10 @@
         android:layout_below="@+id/raund"
         android:longClickable="false"
         android:max="200"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@+id/textView12"
-        android:layout_toStartOf="@+id/textView12" />
+        android:layout_alignParentStart="true" />
 
     <SeekBar
         android:layout_width="wrap_content"
@@ -85,10 +85,10 @@
         android:id="@+id/seekBar2"
         android:layout_below="@+id/limit"
         android:max="100"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@+id/textView14"
-        android:layout_toStartOf="@+id/textView14" />
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -96,10 +96,11 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="0"
         android:id="@+id/textView12"
-        android:layout_alignBottom="@+id/seekBar"
-        android:layout_alignRight="@+id/spinner"
-        android:layout_alignEnd="@+id/spinner"
-        android:width="30dp" />
+        android:width="60dp"
+        android:layout_below="@+id/spinner"
+        android:layout_toRightOf="@+id/raund"
+        android:layout_toEndOf="@+id/raund"
+        android:layout_marginLeft="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -107,9 +108,8 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="0"
         android:id="@+id/textView14"
-        android:layout_alignBottom="@+id/seekBar2"
-        android:layout_alignRight="@+id/spinner"
-        android:layout_alignEnd="@+id/spinner"
-        android:width="30dp" />
+        android:width="60dp"
+        android:layout_above="@+id/seekBar2"
+        android:layout_toStartOf="@+id/textView12" />
 
 </RelativeLayout>

@@ -2,6 +2,7 @@ package com.example.andrew_975.alias;
 
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.SeekBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.andrew_975.alias.entities.Game;
@@ -32,12 +34,18 @@ public class GameActivity extends ActionBarActivity {
     protected int turnLengthSeconds;
     protected int numberWordsToWin;
     protected Topic topic;
+    public TextView t;
+    public TextView t1;
     //ArrayList<Team> teams;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+        t = new TextView(this);
+        t = (TextView)findViewById(R.id.textView12);
+        t1 = new TextView(this);
+        t1 = (TextView)findViewById(R.id.textView14);
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.teams, android.R.layout.simple_spinner_item);
@@ -58,6 +66,7 @@ public class GameActivity extends ActionBarActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 turnLengthSeconds = progress;
+                t1.setText(progress);
             }
         });
 
@@ -75,6 +84,7 @@ public class GameActivity extends ActionBarActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 numberWordsToWin = progress;
+                t.setText(progress);
             }
         });
 

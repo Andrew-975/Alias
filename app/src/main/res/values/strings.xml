@@ -47,15 +47,14 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_game">GameActivity</string>
-
-    <string name="title_activity_team_set">TeamSet</string>
+    <string name="title_activity_test">Test</string>
+    <string name="title_activity_team_s">TeamSet</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="title_activity_game_proc">GameProc</string>
     <string name="title_activity_how_to_play">HowToPlayActivity</string>
     <string name="title_activity_import">ImportActivity</string>
     <string name="title_activity_swipe_list_view">SwipeListView</string>
-    <string name="title_activity_test">Test</string>
     <string name="title_activity_word_statistic">WordStatistic</string>
     <string name="title_activity_turn_stat">TurnStat</string>
     <string name="title_activity_round_stat">RoundStat</string>

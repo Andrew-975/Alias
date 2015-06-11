@@ -86,16 +86,6 @@
                 android:value="com.example.andrew_975.alias.MainActivity" />
         </activity>
         <activity
-            android:name=".TeamSet"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_team_set"
-            android:parentActivityName=".GameActivity"
-            android:theme="@style/FullscreenTheme" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.andrew_975.alias.GameActivity" />
-        </activity>
-        <activity
             android:name=".GameProc"
             android:label="@string/title_activity_game_proc" >
         </activity>
@@ -118,6 +108,10 @@
         <activity
             android:name=".TurnStat"
             android:label="@string/title_activity_turn_stat" >
+        </activity>
+        <activity
+            android:name=".TeamS"
+            android:label="@string/title_activity_team_s" >
         </activity>
         <activity
             android:name=".RoundStat"

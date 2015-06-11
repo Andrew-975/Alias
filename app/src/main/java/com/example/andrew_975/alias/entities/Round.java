@@ -21,6 +21,9 @@ public class Round{
     }
 
     public int[] countStatistics(){
+        if(_teams == null){
+            return null;
+        }
         int i = 0;
         int[] result = new int[_teams.size()];
 

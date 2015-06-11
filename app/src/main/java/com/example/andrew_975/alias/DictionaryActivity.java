@@ -37,15 +37,14 @@ public class DictionaryActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dictionary);
+        try{
         fillDicts();
-        /*if(Exchange.dictionary != null)
-        {
-            dicts.add(Exchange.dictionary);
-            Exchange.dictionary = null;
-        }*/
         MyAdapter adapter = new MyAdapter(dictsNames(), this, true);
         final ListView list = (ListView) findViewById(R.id.listView);
-        list.setAdapter(adapter);
+        list.setAdapter(adapter);}
+        catch(Exception e){
+            Log.v("ex","ficking shit!");
+        }
     }
 
     @Override
@@ -85,14 +84,19 @@ public class DictionaryActivity extends ActionBarActivity {
         return s;
     }
     public void fillDicts() {
-        List<Topic> allTopics = getAllSugarTopics();
-        for(int i = 0;i < allTopics.size();i++){
-            dicts.add(allTopics.get(i));
-            //Log.v("mylog", "" + allTopics.get(i).getId());
+        try {
+            List<Topic> allTopics = getAllSugarTopics();
+            for (int i = 0; i < allTopics.size(); i++) {
+                dicts.add(allTopics.get(i));
+                //Log.v("mylog", "" + allTopics.get(i).getId());
+            }
+        }
+        catch(Exception e){
+            Log.v("ex","ficking shit!");
         }
     }
 
-    public Topic getTopicfromList(String name){
+    /*public Topic getTopicfromList(String name){
         Topic t = new Topic(-1,"");
         for(int i = 0;i < dicts.size();i++){
             if(dicts.get(i).getTopicText().equals(name)){
@@ -103,7 +107,7 @@ public class DictionaryActivity extends ActionBarActivity {
             }
         }
         return t;
-    }
+    }*/
     public static List<Word> getWordsOfTopic(int topicId){
         Topic topic = getSugarTopic(topicId);
         List<Word> wordList = new ArrayList<>();

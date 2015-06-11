@@ -1,6 +1,7 @@
 package com.example.andrew_975.alias;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -66,7 +67,8 @@ public class GameActivity extends ActionBarActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 turnLengthSeconds = progress;
-                t1.setText(progress);
+
+                mHandler1.postDelayed(mUpdateUITimerTask1, 0);
             }
         });
 
@@ -84,7 +86,7 @@ public class GameActivity extends ActionBarActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 numberWordsToWin = progress;
-                t.setText(progress);
+                mHandler.postDelayed(mUpdateUITimerTask, 0);
             }
         });
 
@@ -102,6 +104,24 @@ public class GameActivity extends ActionBarActivity {
 
         });
     }
+
+    private final Runnable mUpdateUITimerTask = new Runnable() {
+        public void run() {
+            // do whatever you want to change here, like:
+            t1.setText("" + numberWordsToWin);
+        }
+    };
+
+    private final Handler mHandler = new Handler();
+
+    private final Runnable mUpdateUITimerTask1 = new Runnable() {
+        public void run() {
+            // do whatever you want to change here, like:
+            t.setText("" + turnLengthSeconds);
+        }
+    };
+
+    private final Handler mHandler1 = new Handler();
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

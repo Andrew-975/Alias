@@ -56,10 +56,10 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Результаты последнего раунда"
         android:id="@+id/textView29"
-        android:layout_below="@+id/currentRound"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="50dp" />
+        android:layout_alignWithParentIfMissing="false"
+        android:layout_below="@+id/wordsCount"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -68,9 +68,8 @@
         android:text="Общий счет"
         android:id="@+id/textView30"
         android:layout_below="@+id/teamListLastRound"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="20dp" />
+        android:layout_alignRight="@+id/currentRound"
+        android:layout_alignEnd="@+id/currentRound" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -80,5 +79,7 @@
         android:id="@+id/wordsCount"
         android:layout_below="@+id/currentRound"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="10dp"
+        android:textSize="14dp"
+        android:textIsSelectable="false" />
 </RelativeLayout>

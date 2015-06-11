@@ -1,5 +1,6 @@
 package com.example.andrew_975.alias;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -7,6 +8,7 @@ import java.util.List;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.SQLException;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -82,13 +84,11 @@ public class DictionaryActivity extends ActionBarActivity {
         }
         return s;
     }
-    public void fillDicts(){
-
-
+    public void fillDicts() {
         List<Topic> allTopics = getAllSugarTopics();
         for(int i = 0;i < allTopics.size();i++){
             dicts.add(allTopics.get(i));
-            Log.v("mylog", "" + allTopics.get(i).getId());
+            //Log.v("mylog", "" + allTopics.get(i).getId());
         }
     }
 
@@ -99,6 +99,7 @@ public class DictionaryActivity extends ActionBarActivity {
                 //return dicts.get(i);
                 //break;
                 t = dicts.get(i);
+                break;
             }
         }
         return t;
@@ -130,17 +131,6 @@ public class DictionaryActivity extends ActionBarActivity {
         Intent intent = new Intent(DictionaryActivity.this, ImportActivity.class);
         startActivity(intent);
     }
-    /*public void neu(){
-        Database d = new Database(this);
-        Topic t = new Topic(1, "это пиздец");
-        insertSugarTopic(t);
-
-        String[] s = {"konung","olaf","morzoviy","her"};
-        for(int i = 0;i < 4;i++) {
-            Word w = new Word(0,new Description(0,"description"),null,t,s[i],false);
-            insertSugarWord(w);
-        }
-    }*/
 
 }
 

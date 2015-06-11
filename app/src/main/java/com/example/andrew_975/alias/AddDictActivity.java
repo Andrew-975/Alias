@@ -3,6 +3,7 @@ package com.example.andrew_975.alias;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -75,11 +76,16 @@ public class AddDictActivity extends ActionBarActivity {
 
     public void onClickBackToDict(View view) {
         Intent intent = new Intent(AddDictActivity.this, DictionaryActivity.class);
-        Topic t = new Topic(Exchange.lastTopicId+1,name);
+        Topic t = new Topic(Exchange.lastTopicId,name);
+        Log.v("mylog","" + "lastTopicId" + Exchange.lastTopicId);
+        Exchange.lastTopicId++;
         insertSugarTopic(t);
         //Exchange.lastTopicId ++;
         for(int i = 0;i < words.size();i++){
             Word w = new Word(Exchange.lastWordId,new Description(0,"description"),null,t,words.get(i),false);
+            Log.v("mylog","" + "word number:" + Exchange.lastWordId);
+            Log.v("mylog","" + "word : " + words.get(i));
+            Exchange.lastWordId++;
             insertSugarWord(w);
         }
         //Exchange.dictionary = new Topic(Exchange.lastId,name);

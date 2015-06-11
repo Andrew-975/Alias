@@ -31,24 +31,23 @@ import static com.example.andrew_975.alias.sqlite.TopicQ.deleteSugarTopic;
 import static com.example.andrew_975.alias.sqlite.TopicQ.getAllSugarTopics;
 
 public class InteractiveArrayAdapter extends BaseAdapter implements ListAdapter {
-    public ArrayList<GameWord> list;
     private Context context;
     private boolean editable;
+    public int stat;
 
-    public InteractiveArrayAdapter (ArrayList<GameWord> list, Context context,boolean editable) {
-        this.list = list;
+    public InteractiveArrayAdapter (Context context,boolean editable) {
         this.context = context;
         this.editable = editable;
     }
 
     @Override
     public int getCount() {
-        return list.size();
+        return Exchange.game.getCurrentRound().getCurrentTurn().getListOfWords().size();
     }
 
     @Override
     public Object getItem(int pos) {
-        return list.get(pos);
+        return Exchange.game.getCurrentRound().getCurrentTurn().getListOfWords().get(pos);
     }
 
     @Override
@@ -67,12 +66,13 @@ public class InteractiveArrayAdapter extends BaseAdapter implements ListAdapter 
 
         //Handle TextView and display string from your list
         final TextView listItemView = (TextView)view.findViewById(R.id.list_item_string_statistic);
-        final GameWord elem = list.get(position);
+        final GameWord elem = Exchange.game.getCurrentRound().getCurrentTurn().getListOfWords().get(position);
         listItemView.setText(elem.getInLowercase());
 
         //setImages
         switch (elem.getGuessedStatus()) {
             case 1:
+
                 break;
             case -1:
                 break;
@@ -90,23 +90,18 @@ public class InteractiveArrayAdapter extends BaseAdapter implements ListAdapter 
             @Override
             public void onClick(View v) {
                 //do something
-                //list.get(position).setStatus(1);
-                if(context instanceof DictionaryActivity) {
-                    List<Topic> allTopics = getAllSugarTopics();
-                    for(int i = 0;i < allTopics.size();i++) {
-                        if (allTopics.get(i).getTopicText().equals(elem)) {
-                            Topic t = allTopics.get(i);
-                            long l = t.getTopicId();
-                            deleteSugarTopic(l);
-                            Exchange.lastTopicId --;
-                            for(int j = 0;j < allTopics.size()-1;j++){
-
-                            }
-                        }
-                    }
-
-                    Log.v("mylog", "deleted!!");
+                if(Exchange.game.getCurrentTurn().getListOfWords().get(position).getGuessedStatus() == 1){
+                    return;
                 }
+                else if(Exchange.game.getCurrentTurn().getListOfWords().get(position).getGuessedStatus() == -1)
+                {
+                    Exchange.game.getCurrentTurn().getListOfWords().get(position).markGuessed();
+                    Exchange.wordStatistic.changeVal(2);
+                    return;
+                }
+                Exchange.game.getCurrentTurn().getListOfWords().get(position).markGuessed();
+                Exchange.wordStatistic.changeVal(1);
+//TODO change pic
                 notifyDataSetChanged();
             }
         });
@@ -114,23 +109,18 @@ public class InteractiveArrayAdapter extends BaseAdapter implements ListAdapter 
             @Override
             public void onClick(View v) {
                 //do something
-                //list.get(position).setStatus(-1);
-                if(context instanceof DictionaryActivity) {
-                    List<Topic> allTopics = getAllSugarTopics();
-                    for(int i = 0;i < allTopics.size();i++) {
-                        if (allTopics.get(i).getTopicText().equals(elem)) {
-                            Topic t = allTopics.get(i);
-                            long l = t.getTopicId();
-                            deleteSugarTopic(l);
-                            //Exchange.game.getCurrentRound().getCurrentTurn().setcountNumberOfUnguessed(Exchange.game.getCurrentRound().getCurrentTurn().countNumberOfGuessed());
-                            for(int j = 0;j < allTopics.size()-1;j++){
-
-                            }
-                        }
-                    }
-
-                    Log.v("mylog", "deleted!!");
+                if(Exchange.game.getCurrentTurn().getListOfWords().get(position).getGuessedStatus() == -1){
+                    return;
                 }
+                else if(Exchange.game.getCurrentTurn().getListOfWords().get(position).getGuessedStatus() == 1)
+                {
+                    Exchange.game.getCurrentTurn().getListOfWords().get(position).markUnguessed();
+                    Exchange.wordStatistic.changeVal(-2);
+                    return;
+                }
+                Exchange.game.getCurrentRound().getCurrentTurn().getListOfWords().get(position).markUnguessed();
+                Exchange.wordStatistic.changeVal(-1);
+//TODO change pic
                 notifyDataSetChanged();
             }
         });
@@ -138,54 +128,27 @@ public class InteractiveArrayAdapter extends BaseAdapter implements ListAdapter 
             @Override
             public void onClick(View v) {
                 //do something
-                //list.get(position).setStatus(0);
-                if(context instanceof DictionaryActivity) {
-                    List<Topic> allTopics = getAllSugarTopics();
-                    for(int i = 0;i < allTopics.size();i++) {
-                        if (allTopics.get(i).getTopicText().equals(elem)) {
-                            Topic t = allTopics.get(i);
-                            long l = t.getTopicId();
-                            deleteSugarTopic(l);
-                            Exchange.lastTopicId --;
-                            for(int j = 0;j < allTopics.size()-1;j++){
-
-                            }
-                        }
-                    }
-
-                    Log.v("mylog", "deleted!!");
+                if(Exchange.game.getCurrentTurn().getListOfWords().get(position).getGuessedStatus() == 0){
+                    return;
                 }
+                else if(Exchange.game.getCurrentTurn().getListOfWords().get(position).getGuessedStatus() == -1)
+                {
+                    Exchange.game.getCurrentTurn().getListOfWords().get(position).markNeutral();
+                    Exchange.wordStatistic.changeVal(1);
+                    return;
+                }
+                Exchange.game.getCurrentRound().getCurrentTurn().getListOfWords().get(position).markNeutral();
+                Exchange.wordStatistic.changeVal(-1);
+//TODO change pic
                 notifyDataSetChanged();
             }
         });
-        /*listItemText.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                if(editable == true) {
-                                                    if(context instanceof DictionaryActivity){
-                                                        ((DictionaryActivity)context).onClickEditAdapter(v, name.getName());
-                                                        if(((DictionaryActivity)context).dicts.size() != 0) {
-                                                            List<Topic> allTopics = getAllSugarTopics();
-                                                            for(int i = 0;i < allTopics.size();i++) {
-                                                                if (allTopics.get(i).getTopicText().equals(name)) {
-                                                                    Topic t = allTopics.get(i);
-                                                                    int l = t.getTopicId();
-                                                                    Exchange.CurrentTopicId = l;
-                                                                }
-                                                            }
-                                                            Exchange.CurrentTopicId = ((DictionaryActivity) context).getTopicfromList(name.getName()).getTopicId();
-                                                        }
-                                                    }
 
-                                                }
-                                            }
-                                        }
-        );*/
         return view;
     }
     public String getName(int position)
     {
-        //return list.get(position).getName();
+        return Exchange.game.getCurrentRound().getCurrentTurn().getListOfWords().get(position).getInLowercase();
     }
 
 }

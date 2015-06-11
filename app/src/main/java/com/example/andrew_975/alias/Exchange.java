@@ -1,5 +1,7 @@
 package com.example.andrew_975.alias;
 
+import android.content.Intent;
+
 import com.example.andrew_975.alias.entities.Game;
 import com.example.andrew_975.alias.entities.Parametres;
 import com.example.andrew_975.alias.entities.Team;
@@ -18,6 +20,8 @@ public class Exchange {
     public static ArrayList<Team> teams;
 
     public static Game game;
+
+    public static WordStatistic wordStatistic;
 
 
     //public static ArrayList<DictionaryForAdd> dicts;

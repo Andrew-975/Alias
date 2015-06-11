@@ -13,27 +13,33 @@
         android:layout_alignParentLeft="true"
         android:paddingLeft="8dp"
         android:textSize="18sp"
-        android:textStyle="bold"
-        android:onClick="onClickEdit" />
+        android:textStyle="bold" />
 
     <ImageButton
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:id="@+id/tr"
-        android:background="@drawable/del"
         android:clickable="true"
         android:layout_centerVertical="true"
         android:layout_toLeftOf="@+id/newt"
-        android:layout_toStartOf="@+id/newt" />
+        android:layout_toStartOf="@+id/newt"
+        android:src="@drawable/dislike"
+        android:scaleType="fitXY"
+        android:background="#ff0e1e0e" />
+
     <ImageButton
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:id="@+id/fal"
-        android:background="@drawable/del"
         android:clickable="true"
+        android:src="@drawable/like"
+        android:maxWidth="50dp"
+        android:scaleType="fitXY"
         android:layout_alignTop="@+id/tr"
         android:layout_toLeftOf="@+id/tr"
-        android:layout_toStartOf="@+id/tr" />
+        android:layout_toStartOf="@+id/tr"
+        android:background="#ff0e1e0e" />
+
     <ImageButton
         android:layout_width="50dp"
         android:layout_height="50dp"

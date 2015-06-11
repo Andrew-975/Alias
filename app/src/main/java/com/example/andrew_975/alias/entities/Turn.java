@@ -99,6 +99,7 @@ public class Turn{
     }
 
     // TODO
+<<<<<<< HEAD
     GameWord suggestNewWord(){
 
         List<Word> allWords = getAllSugarWords();
@@ -110,6 +111,15 @@ public class Turn{
         }
         GameWord result = new GameWord(w,GameWord.NEUTRAL_STATUS);
 
+=======
+    public GameWord suggestNewWord(){
+        GameWord result;
+
+        //result = new GameWord(parametres.getWordCollection().getRandomWordExcept(indexesOfAlreadyAppearedWords));
+        result = new GameWord(new Word());
+        _gameWords.add(result);
+        _currWordCount++;
+>>>>>>> 10e0d7bc2f7431687040e0c88d4e3146fe44bd1a
         return result;
     }
 

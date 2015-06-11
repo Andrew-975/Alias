@@ -29,6 +29,12 @@ public class GameProc extends ActionBarActivity {
 
         new Thread(myThread).start();
         //public Turn turn = new Turn(playingTeam, parametres);
+
+        TextView teamName = (TextView) findViewById(R.id.gameProcTeamName);
+        TextView gameWord = (TextView) findViewById(R.id.gameWord);
+
+        teamName.setText(Exchange.game.getCurrentTeamName());
+        gameWord.setText(Exchange.game.getCurrentTurn().suggestNewWord().getInLowercase());
     }
 
     private Runnable myThread = new Runnable() {

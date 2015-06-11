@@ -9,18 +9,34 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
 
 
 public class RoundStat extends ActionBarActivity {
+
+    private static final String ROUND = "Раунд";
+    private static final String WORDS_COUNT_1 = "Для победы нужно ";
+    private static final String WORDS_COUNT_2 = "слов.";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_round_stat);
 
+        TextView curRoundText = (TextView) findViewById(R.id.currentRound);
+        TextView wordsCountText = (TextView) findViewById(R.id.wordsCount);
+
+        curRoundText.setText(ROUND + " " + Exchange.game.getRoundCount());
+        wordsCountText.setText(WORDS_COUNT_1 + Exchange.game.getNumberWordsToWin() + WORDS_COUNT_2);
+
         ListView listView1 = (ListView)findViewById(R.id.teamListLastRound);
 
-        final String[] teams = new String[] {"Team1", "Team2", "Team3"};
+        //final String[] teams = new String[] {"Team1", "Team2", "Team3"};
+        ArrayList<String> arrayList = Exchange.game.getAllTeamNames();
+        final String [] teams = new String[arrayList.size()];
+        arrayList.toArray(teams);
 
         ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this,	android.R.layout.simple_list_item_1, teams);
 
@@ -28,7 +44,8 @@ public class RoundStat extends ActionBarActivity {
 
         final String[] count1 = new String[] {"Team1", "Team2", "Team3"};
 
-        ArrayAdapter<String> adapter1c = new ArrayAdapter<String>(this,	android.R.layout.simple_list_item_1, count1);
+        //ArrayAdapter<String> adapter1c = new ArrayAdapter<String>(this,	android.R.layout.simple_list_item_1, count1);
+        ArrayAdapter<String> adapter1c = new ArrayAdapter<String>(this,	android.R.layout.simple_list_item_1, teams);
 
         listView1.setAdapter(adapter1c);
 

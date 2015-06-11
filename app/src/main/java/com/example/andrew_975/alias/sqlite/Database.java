@@ -46,7 +46,7 @@ import java.sql.SQLException;
 public class Database extends SQLiteOpenHelper{
 
     //The Android's default system path of your application database.
-    private static String DB_PATH = "/data/data/com.example.andrew_975.alias/"; // ПРОВЕРИТЬ!!!!!!!
+    private static String DB_PATH = "/data/data/com.example.andrew_975.alias/databases/"; // ПРОВЕРИТЬ!!!!!!!
 
     private static String DB_NAME = "AliasDB.db";
 

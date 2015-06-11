@@ -30,28 +30,28 @@ public abstract class DBQueries {
             + Constants.TEAM_NAME + " TEXT NOT NULL,"
             + Constants.TEAM_POINTS + " INTEGER NOT NULL);";
 
-    public static final String CREATE_PG_TABLE = "create table IF NOT EXISTS" + Constants.PG_TABLE_NAME + " ("
-            + Constants.PG_ID + "INTEGER PRIMARY KEY AUTOINCREMENT, "
+    public static final String CREATE_PG_TABLE = "create table IF NOT EXISTS " + Constants.PG_TABLE_NAME + " ("
+            + Constants.PG_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + Constants.WORD_ID + " INTEGER, "
-            + Constants.TEAM_ID + " INTEGER,"
+            + Constants.TEAM_ID + " INTEGER, "
             + Constants.PG_DATE + " INTEGER NOT NULL, "
-            + "FOREIGN KEY" + Constants.WORD_ID + " REFERENCES Word(" + Constants.WORD_ID + "),"
-            + "FOREIGN KEY" + Constants.TEAM_ID + " REFERENCES Team(" + Constants.TEAM_ID + ");";
+            + " FOREIGN KEY " + Constants.WORD_ID + " REFERENCES Word(" + Constants.WORD_ID + "),"
+            + " FOREIGN KEY " + Constants.TEAM_ID + " REFERENCES Team(" + Constants.TEAM_ID + "));";
 
     public static final String CREATE_TOPIC_TABLE = "create table IF NOT EXISTS Topic ("
             + Constants.TOPIC_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + Constants.TOPIC_TEXT + " TEXT NOT NULL)";
 
     public static final String CREATE_WORD_TABLE = "create table IF NOT EXISTS " + Constants.WORD_TABLE_NAME + " ("
-            + Constants.WORD_ID + "INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + Constants.WORD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + Constants.DESCRIPTION_ID + " INTEGER, "
             + Constants.LEVEL_ID + " INTEGER,"
             + Constants.TOPIC_ID + " INTEGER,"
             + Constants.WORD_TEXT + " TEXT NOT NULL,"
             + Constants.WORD_IS_DEFAULT + " TEXT NOT NULL, "
-            + "FOREIGN KEY" + Constants.DESCRIPTION_ID + " REFERENCES Description(" + Constants.DESCRIPTION_ID + "),"
-            + "FOREIGN KEY" + Constants.LEVEL_ID + " REFERENCES Level(" + Constants.LEVEL_ID + "),"
-            + "FOREIGN KEY" + Constants.TOPIC_ID + " REFERENCES Topic(" + Constants.TOPIC_ID + ");";
+            + " FOREIGN KEY " + Constants.DESCRIPTION_ID + " REFERENCES Description(" + Constants.DESCRIPTION_ID + "),"
+            + " FOREIGN KEY " + Constants.LEVEL_ID + " REFERENCES Level(" + Constants.LEVEL_ID + "),"
+            + " FOREIGN KEY " + Constants.TOPIC_ID + " REFERENCES Topic(" + Constants.TOPIC_ID + ");";
 
     public static void createAllTables(SQLiteDatabase db) {
         db.execSQL(CREATE_DESCRIPTION_TABLE);

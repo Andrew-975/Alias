@@ -11,7 +11,10 @@ import android.view.View;
 import com.example.andrew_975.alias.entities.Description;
 import com.example.andrew_975.alias.entities.Topic;
 import com.example.andrew_975.alias.entities.Word;
+import com.example.andrew_975.alias.sqlite.DBQueries;
 import com.example.andrew_975.alias.sqlite.Database;
+
+import java.io.IOException;
 
 import static com.example.andrew_975.alias.sqlite.TopicQ.deleteSugarTopic;
 import static com.example.andrew_975.alias.sqlite.TopicQ.insertSugarTopic;
@@ -24,6 +27,26 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+      /* Database myDbHelper = new Database(this);
+       //myDbHelper = new Database(this);
+
+       try {
+
+           myDbHelper.createDataBase();
+
+       } catch (IOException ioe) {
+
+           throw new Error("Unable to create database");
+
+       }
+
+       try {
+           myDbHelper.openDataBase();
+
+       } catch (java.sql.SQLException e) {
+           e.printStackTrace();
+       }
+       DBQueries.createAllTables(myDbHelper.getWritableDatabase());*/
    }
 
     @Override

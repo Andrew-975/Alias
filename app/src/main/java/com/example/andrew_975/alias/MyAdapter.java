@@ -7,6 +7,7 @@ package com.example.andrew_975.alias;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,8 +24,10 @@ import android.widget.Toast;
 import com.example.andrew_975.alias.entities.Topic;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static com.example.andrew_975.alias.sqlite.TopicQ.deleteSugarTopic;
+import static com.example.andrew_975.alias.sqlite.TopicQ.getAllSugarTopics;
 
 public class MyAdapter extends BaseAdapter implements ListAdapter {
     public ArrayList<String> list = new ArrayList<String>();
@@ -75,8 +78,22 @@ public class MyAdapter extends BaseAdapter implements ListAdapter {
             public void onClick(View v) {
                 //do something
                 list.remove(position); //or some other task
-                long l = ((DictionaryActivity) context).getTopicfromList(name).getTopicId();
-                deleteSugarTopic(l);
+                if(context instanceof DictionaryActivity) {
+                    List<Topic> allTopics = getAllSugarTopics();
+                    for(int i = 0;i < allTopics.size();i++) {
+                        if (allTopics.get(i).getTopicText().equals(name)) {
+                            Topic t = allTopics.get(i);
+                            long l = t.getTopicId();
+                            deleteSugarTopic(l);
+                            Exchange.lastTopicId --;
+                            for(int j = 0;j < allTopics.size()-1;j++){
+
+                            }
+                        }
+                    }
+
+                    Log.v("mylog", "deleted!!");
+                }
                 notifyDataSetChanged();
             }
         });
@@ -87,6 +104,14 @@ public class MyAdapter extends BaseAdapter implements ListAdapter {
                    if(context instanceof DictionaryActivity){
                        ((DictionaryActivity)context).onClickEditAdapter(v, name);
                        if(((DictionaryActivity)context).dicts.size() != 0) {
+                           List<Topic> allTopics = getAllSugarTopics();
+                           for(int i = 0;i < allTopics.size();i++) {
+                               if (allTopics.get(i).getTopicText().equals(name)) {
+                                   Topic t = allTopics.get(i);
+                                   int l = t.getTopicId();
+                                   Exchange.CurrentTopicId = l;
+                               }
+                           }
                            Exchange.CurrentTopicId = ((DictionaryActivity) context).getTopicfromList(name).getTopicId();
                        }
                    }

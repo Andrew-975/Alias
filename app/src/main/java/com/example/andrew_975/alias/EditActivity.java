@@ -3,6 +3,7 @@ package com.example.andrew_975.alias;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -63,8 +64,12 @@ public class EditActivity extends ActionBarActivity {
     public void onClickOk(View view) {
         EditText edit = (EditText) findViewById(R.id.editTextAdd);
         //Word w = new Word(Exchange.lastWordId+1,edit.getText().toString(),getSugarTopic(Exchange.CurrentTopicId));
-        Word w =   new Word(Exchange.lastWordId+1, new Description(0, "description"), null, getSugarTopic(Exchange.CurrentTopicId), edit.getText().toString(),false);
+        Word w =  new Word(Exchange.lastWordId, new Description(0, "description"), null, getSugarTopic(Exchange.CurrentTopicId), edit.getText().toString(),false);
         insertSugarWord(w);
+        Log.v("mylog", "-------");
+        Log.v("mylog", "word number:" + Exchange.lastWordId);
+        Log.v("mylog", "topic : " + getSugarTopic(Exchange.CurrentTopicId));
+        Log.v("mylog", "word : " + edit.getText().toString());
         edit.setText("");
     }
 
@@ -74,6 +79,7 @@ public class EditActivity extends ActionBarActivity {
             String s = edit.getText().toString();
             if(words.get(i).getWordText().equals(s)){
                 deleteSugarWord(words.get(i).getId());
+                Log.v("mylog", " word deleted: " + words.get(i).getId());
             }
         }
         edit.setText("");

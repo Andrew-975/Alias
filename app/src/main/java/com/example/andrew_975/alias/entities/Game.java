@@ -9,14 +9,14 @@ public class Game{
     private static final String NO_TEAM_NAME = "NO_TEAM_NAME";
 
     ArrayList<Team> _teams;
-    Parametres _parametres;
+    Parameters _parameters;
     ArrayList<Round> _rounds;
     int _roundCount;
     int[] _statistics;
 
-    public Game(ArrayList<Team> teams, Parametres parametres){
+    public Game(ArrayList<Team> teams, Parameters parameters){
         _teams = teams;
-        _parametres = parametres;
+        _parameters = parameters;
         _rounds = new ArrayList<Round>();
         _roundCount = -1;
         _statistics = new int[_teams.size()];
@@ -49,11 +49,11 @@ public class Game{
     }
 
     public int getTurnLengthSeconds(){
-        return _parametres.getTurnLengthSeconds();
+        return _parameters.getTurnLengthSeconds();
     }
 
     public int getNumberWordsToWin(){
-        return _parametres.getNumberWordsToWin();
+        return _parameters.getNumberWordsToWin();
     }
 
     public Round getCurrentRound(){
@@ -141,7 +141,7 @@ public class Game{
             return false;
         }
 
-        Round round = new Round(_teams, _parametres);
+        Round round = new Round(_teams, _parameters);
         _rounds.add(round);
         round.start();
         _roundCount++;
@@ -170,7 +170,7 @@ public class Game{
 
     public int determineWinnerIndex(){
         for(int team = 0; team < _teams.size(); team++){
-            if(_statistics[team] >= _parametres.getNumberWordsToWin()){
+            if(_statistics[team] >= _parameters.getNumberWordsToWin()){
                 return team;
             }
         }

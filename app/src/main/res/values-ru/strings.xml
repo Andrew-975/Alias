@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="title_activity_dictionary">Словарь</string>
+    <string name="title_activity_settings">Настройки</string>
+    <string name="title_activity_about">Про программу</string>
+    <string name="title_activity_edit">Редактировать</string>
+    <string name="title_activity_add_dict">Добавить словарь</string>
+    <string name="title_activity_game">Игра</string>
+    <string name="title_activity_test">Тест</string>
+    <string name="title_activity_team_s">Выберите команды</string>
+    <string name="title_activity_game_proc">Игра</string>
+    <string name="title_activity_how_to_play">Как играть</string>
+    <string name="title_activity_import">Импорт</string>
+    <string name="title_activity_swipe_list_view">SwipeListView</string>
+    <string name="title_activity_word_statistic">Статистика слова</string>
+    <string name="title_activity_turn_stat">Статистика хода</string>
+    <string name="title_activity_round_stat">Статистика раунда</string>
+
+    <string-array name="dictionaries">
+        <item>Штаны</item>
+        <item>Живопись</item>
+        <item>Колбастер</item>
+        <item>Сосистер</item>
+        <item>Мой словарь 1</item>
+    </string-array>
+    <string-array name="teamset">
+        <item>Бурундуки</item>
+        <item>Суслики</item>
+        <item>Бобрики</item>
+        <item>Сосистеры</item>
+        <item>Прост</item>
+    </string-array>
+    <string-array name="add_dictionaries">
+        <item>Игра престолов</item>
+        <item>Наша группа</item>
+        <item>Лейкопластырь</item>
+    </string-array>
+    <string-array name="words">
+        <item>Термоядерный синтез</item>
+        <item>Британские ученые</item>
+        <item>Три-метил-бутан</item>
+        <item>Большой взрыв</item>
+        <item>Популярная механика</item>
+        <item>Эйнштейн</item>
+        <item>Сингулярность</item>
+    </string-array>
+    <string-array name="teamNames">
+        <item>Выбрать словарь:</item>
+        <item>Наука</item>
+        <item>Живопись</item>
+        <item>The Game of Thrones</item>
+    </string-array>
+    <string name="title_activity_download">Загрузить</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string name="team">Команда</string>
+    <string name="teams">Команды</string>
+    <string name="alias">Alias</string>
+    <string name="aboutApp">О программе</string>
+    <string name="action_settings">Настройки</string>
+    <string name="continueWord">Продолжить</string>
+    <string name="dictionaries">Словари</string>
+    <string name="enterTeamName">Введите имя команды..</string>
+    <string name="game">Игра</string>
+    <string name="gameSettings">Настройки игры</string>
+    <string name="go">Вперёд!</string>
+    <string name="settings">Настройки</string>
+    <string name="howToPlay">Как играть?</string>
+    <string name="play">Играть</string>
+    <string name="ready">Готово</string>
+    <string name="startGame">Начать игру!</string>
+    <string name="timeForRoundText">Время на раунд:</string>
+    <string name="wordsToWinText">Слов для победы:</string>
+    <string name="app_name" translatable="false">Alias</string>
+
+</resources>

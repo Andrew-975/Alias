@@ -1,14 +1,6 @@
 package com.example.andrew_975.alias.entities;
 
-import com.example.andrew_975.alias.Exchange;
-
 import java.util.ArrayList;
-import java.util.List;
-
-import static com.example.andrew_975.alias.sqlite.TopicQ.getAllSugarTopics;
-import static com.example.andrew_975.alias.sqlite.TopicQ.getSugarTopic;
-import static com.example.andrew_975.alias.sqlite.WordQ.getAllSugarWords;
-import static com.example.andrew_975.alias.sqlite.WordQ.getSugarWord;
 
 /**
  * Created by Andrew_975 on 13.05.2015.
@@ -16,7 +8,7 @@ import static com.example.andrew_975.alias.sqlite.WordQ.getSugarWord;
 public class Turn{
     ArrayList<GameWord> _gameWords;
     Team _team;
-    Parametres _parametres;
+    Parameters _parameters;
     int _currWordCount;
     int _statistics;
     int _guessedCount;
@@ -24,9 +16,9 @@ public class Turn{
 
     private static int i = 0;
 
-    public Turn(Team playingTeam, Parametres parametres){
+    public Turn(Team playingTeam, Parameters parameters){
         _team = _team;
-        _parametres = parametres;
+        _parameters = parameters;
         _currWordCount = -1;
         _gameWords = new ArrayList<GameWord>();
     }

@@ -1,9 +1,6 @@
 package com.example.andrew_975.alias;
 
-import android.content.Intent;
-
 import com.example.andrew_975.alias.entities.Game;
-import com.example.andrew_975.alias.entities.Parametres;
 import com.example.andrew_975.alias.entities.Team;
 import com.example.andrew_975.alias.entities.Topic;
 
@@ -16,7 +13,7 @@ import static com.example.andrew_975.alias.sqlite.WordQ.getAllSugarWords;
  * Created by Ira on 29.05.2015.
  */
 public class Exchange {
-    //public static Parametres parametres;
+    //public static Parameters parametres;
     public static ArrayList<Team> teams;
 
     public static Game game;

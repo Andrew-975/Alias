@@ -7,14 +7,14 @@ import java.util.ArrayList;
  */
 public class Round{
     ArrayList<Team> _teams;
-    Parametres _parametres;
+    Parameters _parameters;
     ArrayList<Turn> _turns;
     int _turnCount;
     int[] _statistics;
 
-    public Round(ArrayList<Team> teams, Parametres parametres){
+    public Round(ArrayList<Team> teams, Parameters parameters){
         _teams = teams;
-        _parametres = parametres;
+        _parameters = parameters;
         _turnCount = -1;
         _turns = new ArrayList<Turn>();
         _statistics = new int[_teams.size()];
@@ -73,7 +73,7 @@ public class Round{
         if((_turnCount >= _teams.size()) || (_turnCount < 0)){
             return false;
         }
-        Turn currTurn = new Turn(_teams.get(_turnCount), _parametres);
+        Turn currTurn = new Turn(_teams.get(_turnCount), _parameters);
         _turns.add(currTurn);
         currTurn.start();
         return true;

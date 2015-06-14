@@ -4,7 +4,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,26 +13,17 @@ import android.widget.ArrayAdapter;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.app.AlertDialog;
 
 import com.example.andrew_975.alias.entities.Game;
-import com.example.andrew_975.alias.entities.Parametres;
-import com.example.andrew_975.alias.entities.Team;
+import com.example.andrew_975.alias.entities.Parameters;
 import com.example.andrew_975.alias.entities.Topic;
-
-import java.util.ArrayList;
-
-import com.example.andrew_975.alias.entities.Parametres;
-import com.example.andrew_975.alias.entities.Team;
-
-import java.util.ArrayList;
 
 
 public class GameActivity extends ActionBarActivity {
 
     public Game game;
-    public Parametres params;
+    public Parameters params;
     protected int turnLengthSeconds;
     protected int numberWordsToWin;
     protected Topic topic;
@@ -45,18 +35,35 @@ public class GameActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
         t = new TextView(this);
-        t = (TextView) findViewById(R.id.textView12);
+        t = (TextView) findViewById(R.id.timeForRoundValueText);
         t1 = new TextView(this);
-        t1 = (TextView) findViewById(R.id.textView14);
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        t1 = (TextView) findViewById(R.id.wordsToWinValueText);
+
+        Spinner spinner = (Spinner) findViewById(R.id.chooseDictionarySpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.teams, android.R.layout.simple_spinner_item);
+                R.array.teamNames, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                String nameTopic = parentView.getItemAtPosition(position).toString();
+                topic = new Topic(1, nameTopic);
+            }
 
-        final SeekBar sk = (SeekBar) findViewById(R.id.seekBar);
-        sk.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+
+            }
+
+        });
+
+        // SeekBars.
+        final SeekBar timeForRoundSeekBar = (SeekBar) findViewById(R.id.timeForRoundBar);
+        timeForRoundSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
@@ -74,39 +81,9 @@ public class GameActivity extends ActionBarActivity {
             }
 
         });
-//test of longClick
-        sk.setOnLongClickListener(new View.OnLongClickListener() {
-                                      @Override
-                                      public boolean onLongClick(View view) {
-                                          AlertDialog alertDialog = new AlertDialog.Builder(GameActivity.this).create();
-                                          alertDialog.setTitle("Reset...");
-                                          alertDialog.setMessage("Are you sure?");
-                                          alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
-                                              public void onClick(DialogInterface dialog, int which) {
-// here you can add functions
-                                              }
-                                          });
-                                          alertDialog.show();
-                                      return true;}
-                                  }
-
-        );
-        sk.setOnLongClickListener(new View.OnLongClickListener() {
-                                      @Override
-                                      public boolean onLongClick(View view) {
-                                          return false;
-                                      }
-                                  }
-
-        );
-
-
-
-
-
-
-        final SeekBar sk1=(SeekBar) findViewById(R.id.seekBar2);
-        sk1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        timeForRoundSeekBar.setProgress(Parameters.STANDARD_TURN_LENGTH_SECONDS);
+        final SeekBar wordsToStopSeekBar = (SeekBar) findViewById(R.id.seekBar2);
+        wordsToStopSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
@@ -122,23 +99,7 @@ public class GameActivity extends ActionBarActivity {
                 mHandler.postDelayed(mUpdateUITimerTask, 0);
             }
         });
-
-
-
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                String nameTopic = parentView.getItemAtPosition(position).toString();
-                topic = new Topic(1, nameTopic);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-                // your code here
-
-            }
-
-        });
+        wordsToStopSeekBar.setProgress(Parameters.STANDARD_NUMBER_WORDS_TO_WIN);
     }
 
     private final Runnable mUpdateUITimerTask = new Runnable() {
@@ -189,13 +150,10 @@ public class GameActivity extends ActionBarActivity {
         Intent intent = new Intent(GameActivity.this, TurnStat.class);
         startActivity(intent);
     }
-    public void onClickEditTeams(View view) {
-        Intent intent = new Intent(GameActivity.this, TeamS.class);
-        startActivity(intent);
-    }
+    //public void
 
     public void startGame() {
-        params = new Parametres(turnLengthSeconds, numberWordsToWin, topic);
+        params = new Parameters(turnLengthSeconds, numberWordsToWin, topic);
         Exchange.game = new Game(Exchange.teams, params);
         Exchange.game.start();
         //Exchange.game = game;

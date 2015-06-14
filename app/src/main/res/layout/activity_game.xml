@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Игра"
+        android:text="@string/gameSettings"
         android:id="@+id/game"
         android:textSize="50dp"
         android:layout_alignParentTop="true"
@@ -19,7 +19,7 @@
     <ImageButton
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:id="@+id/backGame"
+        android:id="@+id/backButtonGameActivity"
         android:background="@drawable/drawable"
         android:onClick="onClickGameToMain"
         android:layout_alignBottom="@+id/game"
@@ -29,7 +29,7 @@
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/spinner"
+        android:id="@+id/chooseDictionarySpinner"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/game"
@@ -39,40 +39,42 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Длительность раунда:"
-        android:id="@+id/raund"
-        android:layout_below="@+id/spinner"
-        android:layout_toRightOf="@+id/backGame"
-        android:layout_toEndOf="@+id/backGame" />
+        android:text="@string/timeForRoundText"
+        android:textSize="30dp"
+        android:id="@+id/timeForRoundText"
+        android:layout_below="@+id/chooseDictionarySpinner"
+        android:layout_toRightOf="@+id/backButtonGameActivity"
+        android:layout_marginTop="10dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Предел слов:"
-        android:id="@+id/limit"
-        android:textSize="20dp"
-        android:layout_marginTop="54dp"
-        android:layout_below="@+id/raund"
-        android:layout_alignLeft="@+id/raund"
-        android:layout_alignStart="@+id/raund" />
+        android:text="@string/wordsToWinText"
+        android:id="@+id/wordsToWinText"
+        android:textSize="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/timeForRoundBar"
+        android:layout_alignLeft="@+id/timeForRoundText"
+        android:layout_alignStart="@+id/timeForRoundText" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Вперед!"
+        android:text="@string/startGame"
         android:id="@+id/button2"
-        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:textSize="20dp"
+        android:layout_below="@+id/wordsToWinText"
+        android:layout_marginTop="50dp"
         android:onClick="onClickGameStart" />
 
     <SeekBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/seekBar"
-        android:layout_below="@+id/raund"
-        android:longClickable="false"
+        android:id="@+id/timeForRoundBar"
+        android:layout_below="@+id/timeForRoundText"
+        android:longClickable="true"
         android:max="200"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
@@ -83,33 +85,46 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/seekBar2"
-        android:layout_below="@+id/limit"
+        android:layout_below="@+id/wordsToWinText"
         android:max="100"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:longClickable="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="0"
-        android:id="@+id/textView12"
-        android:width="60dp"
-        android:layout_below="@+id/spinner"
-        android:layout_toRightOf="@+id/raund"
-        android:layout_toEndOf="@+id/raund"
-        android:layout_marginLeft="10dp" />
+        android:textSize="30dp"
+        android:id="@+id/timeForRoundValueText"
+        android:layout_below="@+id/chooseDictionarySpinner"
+        android:layout_toRightOf="@+id/timeForRoundText"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="0"
-        android:id="@+id/textView14"
-        android:width="60dp"
-        android:layout_above="@+id/seekBar2"
-        android:layout_toStartOf="@+id/textView12" />
+        android:textSize="30dp"
+        android:id="@+id/wordsToWinValueText"
+        android:layout_below="@+id/timeForRoundBar"
+        android:layout_toRightOf="@+id/wordsToWinText"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"/>
+
+    <ImageButton
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:id="@+id/timeForRoundImageButton"
+        android:layout_below="@+id/chooseDictionarySpinner"
+        android:layout_toRightOf="@+id/timeForRoundValueText"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        android:onClick=""/>
 
 </RelativeLayout>

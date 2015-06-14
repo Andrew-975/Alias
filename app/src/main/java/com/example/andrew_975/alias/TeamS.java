@@ -2,7 +2,6 @@ package com.example.andrew_975.alias;
 
 import android.content.Intent;
 import android.content.res.Resources;
-import android.nfc.Tag;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -11,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.util.Log;
 
 import com.example.andrew_975.alias.entities.Team;
 
@@ -29,9 +27,9 @@ public class TeamS extends ActionBarActivity {
         Resources res = getResources();
         Collections.addAll(teams, res.getStringArray(R.array.teamset));
         MyAdapter adapter = new MyAdapter(teams, this, false);
-        final ListView list = (ListView) findViewById(R.id.listView2);
+        final ListView list = (ListView) findViewById(R.id.teamsListView);
         list.setAdapter(adapter);
-        final EditText edit1 = (EditText) findViewById(R.id.editText4);
+        final EditText edit1 = (EditText) findViewById(R.id.teamNameEditText);
         edit1.setOnKeyListener(new View.OnKeyListener() {
             public boolean onKey(View v ,int keyCode, KeyEvent event) {
                 // TODO Auto-generated method stub

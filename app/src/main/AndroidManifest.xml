@@ -3,18 +3,123 @@
     package="com.example.andrew_975.alias" >
 
     <application
+        android:name="com.orm.SugarApp"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/Theme" >
+        <meta-data
+            android:name="DATABASE"
+            android:value="AliasDB.db" />
+        <meta-data
+            android:name="VERSION"
+            android:value="1" />
+        <meta-data
+            android:name="QUERY_LOG"
+            android:value="true" />
+        <meta-data
+            android:name="DOMAIN_PACKAGE_NAME"
+            android:value="com.example.andrew_975.alias" />
+
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name" >
+            android:label="Alias" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".DictionaryActivity"
+            android:label="Словари"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.andrew_975.alias.MainActivity" />
+        </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="Настройки"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.andrew_975.alias.MainActivity" />
+        </activity>
+        <activity
+            android:name=".AboutActivity"
+            android:label="О приложении"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.andrew_975.alias.MainActivity" />
+        </activity>
+        <activity
+            android:name=".EditActivity"
+            android:label="Изменить словарь"
+            android:parentActivityName=".DictionaryActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.andrew_975.alias.DictionaryActivity" />
+        </activity>
+        <activity
+            android:name=".AddDictActivity"
+            android:label="Добавить словарь"
+            android:parentActivityName=".DictionaryActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.andrew_975.alias.DictionaryActivity" />
+        </activity>
+        <activity
+            android:name=".DownloadActivity"
+            android:label="Загрузить словарь"
+            android:parentActivityName=".DictionaryActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.andrew_975.alias.DictionaryActivity" />
+        </activity>
+        <activity
+            android:name=".GameActivity"
+            android:label="Alias"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.andrew_975.alias.MainActivity" />
+        </activity>
+        <activity
+            android:name=".GameProc"
+            android:label="@string/title_activity_game_proc" >
+        </activity>
+        <activity
+            android:name=".HowToPlayActivity"
+            android:label="@string/title_activity_how_to_play"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.andrew_975.alias.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ImportActivity"
+            android:label="@string/title_activity_import"
+            android:parentActivityName=".DictionaryActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.andrew_975.alias.DictionaryActivity" />
+        </activity>
+        <activity
+            android:name=".TurnStat"
+            android:label="@string/title_activity_turn_stat" >
+        </activity>
+        <activity
+            android:name=".TeamS"
+            android:label="@string/title_activity_team_s" >
+        </activity>
+        <activity
+            android:name=".RoundStat"
+            android:label="@string/title_activity_round_stat" >
+        </activity>
+        <activity
+            android:name=".WordStatistic"
+            android:label="@string/title_activity_word_statistic" >
         </activity>
     </application>
 

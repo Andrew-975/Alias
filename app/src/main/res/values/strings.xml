@@ -83,8 +83,10 @@
     <string name="play">Play</string>
     <string name="team">Team</string>
     <string name="go">Go!</string>
-
-
+    <string name="round">Round</string>
+    <string name="score">Score:</string>
+    <string name="enterTimeInSeconds">Enter time in seconds</string>
+    <string name="enterWordsToWin">Enter number of words</string>
 
 
 </resources>

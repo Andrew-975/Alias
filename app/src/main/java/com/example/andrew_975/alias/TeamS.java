@@ -29,6 +29,7 @@ public class TeamS extends ActionBarActivity {
         MyAdapter adapter = new MyAdapter(teams, this, false);
         final ListView list = (ListView) findViewById(R.id.teamsListView);
         list.setAdapter(adapter);
+
         final EditText edit1 = (EditText) findViewById(R.id.teamNameEditText);
         edit1.setOnKeyListener(new View.OnKeyListener() {
             public boolean onKey(View v ,int keyCode, KeyEvent event) {
@@ -68,7 +69,6 @@ public class TeamS extends ActionBarActivity {
 
     public void onClickTeamSReady(ArrayList<Team> array){
         Exchange.teams = array;
-        //return Exchange.teams;
     }
 
     public ArrayList<Team> convertToTeams()

@@ -24,6 +24,12 @@ public class WordStatistic extends ActionBarActivity {
     public TextView t3;
     public Button bt8;
 
+    private static String SCORE;
+
+    {
+        SCORE = getResources().getString(R.string.score);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,6 +85,6 @@ public class WordStatistic extends ActionBarActivity {
     }
 
     public void changeVal(int num) {
-        bt8.setText("Счёт: " + Exchange.game.getCurrentTurn().countStatistics());
+        bt8.setText(SCORE + Exchange.game.getCurrentTurn().countStatistics());
     }
 }

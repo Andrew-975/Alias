@@ -1,6 +1,7 @@
 package com.example.andrew_975.alias;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,9 +16,9 @@ import java.util.ArrayList;
 
 public class TurnStat extends ActionBarActivity {
 
-    private static final String ROUND = "Раунд";
-    private static final String GAME = "Игра";
-    private static final String DOT = " .";
+    private static String ROUND;
+    private static String GAME;
+    private static String DOT = ". ";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +28,10 @@ public class TurnStat extends ActionBarActivity {
         TextView curTurnText = (TextView) findViewById(R.id.currentTurn);
         TextView curTeamState = (TextView) findViewById(R.id.currentTeam);
 
-        curTurnText.setText(ROUND + Exchange.game.getRoundCount() + DOT + GAME + Exchange.game.getTurnCount());
+        ROUND = getResources().getString(getResources().getIdentifier("round", "string", getPackageName()));
+        GAME = getResources().getString(getResources().getIdentifier("game", "string", getPackageName()));
+
+        curTurnText.setText(ROUND + " " + Exchange.game.getRoundCount() + DOT + GAME + " " + Exchange.game.getTurnCount());
         curTeamState.setText(Exchange.game.getCurrentTeamName());
 
         ListView listView1 = (ListView)findViewById(R.id.listView3);

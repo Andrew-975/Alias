@@ -76,5 +76,9 @@
     <string name="timeForRoundText">Время на раунд:</string>
     <string name="wordsToWinText">Слов для победы:</string>
     <string name="app_name" translatable="false">Alias</string>
+    <string name="round">Раунд</string>
+    <string name="score">Счёт: </string>
+    <string name="enterTimeInSeconds">Введите время в секундах</string>
+    <string name="enterWordsToWin">Введите количество слов</string>
 
 </resources>

@@ -1,15 +1,18 @@
 package com.example.andrew_975.alias;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.InputType;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -82,7 +85,7 @@ public class GameActivity extends ActionBarActivity {
 
         });
         timeForRoundSeekBar.setProgress(Parameters.STANDARD_TURN_LENGTH_SECONDS);
-        final SeekBar wordsToStopSeekBar = (SeekBar) findViewById(R.id.seekBar2);
+        final SeekBar wordsToStopSeekBar = (SeekBar) findViewById(R.id.wordsToWinBar);
         wordsToStopSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
             @Override
@@ -141,21 +144,107 @@ public class GameActivity extends ActionBarActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
     public void onClickGameToMain(View view) {
         Intent intent = new Intent(GameActivity.this, MainActivity.class);
         startActivity(intent);
     }
+
     public void onClickGameStart(View view) {
         startGame();
         Intent intent = new Intent(GameActivity.this, TurnStat.class);
         startActivity(intent);
     }
-    //public void
+
+    public void onClickTimeForRoundButton(View view){
+        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(GameActivity.this);
+        final AlertDialog alertDialog = alertDialogBuilder.create();
+        final SeekBar timeForRoundSeekBar = (SeekBar) findViewById(R.id.timeForRoundBar);
+
+        alertDialog.setTitle(getResources().getString(getResources().getIdentifier("timeForRoundText", "string", getPackageName())));
+        alertDialog.setMessage(getResources().getString(getResources().getIdentifier("enterTimeInSeconds", "string", getPackageName()))
+            + " (0-" + timeForRoundSeekBar.getMax() + ")");
+
+        final EditText editText = new EditText(GameActivity.this);
+        editText.setInputType(InputType.TYPE_CLASS_NUMBER);
+
+        editText.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN &&
+                        event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
+
+                    final SeekBar timeForRoundSeekBar = (SeekBar) findViewById(R.id.timeForRoundBar);
+                    int inputValue = Integer.parseInt(editText.getText().toString());
+
+                    timeForRoundSeekBar.setProgress(formatNum(inputValue, 0, timeForRoundSeekBar.getMax()));
+                    editText.setText("");
+                    alertDialog.cancel();
+                    return true;
+                }
+                return false;
+            }
+        });
+
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT);
+        editText.setLayoutParams(lp);
+        alertDialog.setView(editText);
+
+        alertDialog.show();
+    }
+
+    public void onClickWordsToWinButton(View view){
+        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(GameActivity.this);
+        final AlertDialog alertDialog = alertDialogBuilder.create();
+        final SeekBar wordsToWinSeekBar = (SeekBar) findViewById(R.id.wordsToWinBar);
+
+        alertDialog.setTitle(getResources().getString(getResources().getIdentifier("wordsToWinText", "string", getPackageName())));
+        alertDialog.setMessage(getResources().getString(getResources().getIdentifier("enterWordsToWin", "string", getPackageName()))
+                + " (0-" + wordsToWinSeekBar.getMax() + ")");
+
+        final EditText editText = new EditText(GameActivity.this);
+        editText.setInputType(InputType.TYPE_CLASS_NUMBER);
+
+        editText.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN &&
+                        event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
+
+                    final SeekBar wordsToWinSeekBar = (SeekBar) findViewById(R.id.wordsToWinBar);
+                    int inputValue = Integer.parseInt(editText.getText().toString());
+
+                    wordsToWinSeekBar.setProgress(formatNum(inputValue, 0, wordsToWinSeekBar.getMax()));
+                    editText.setText("");
+                    alertDialog.cancel();
+                    return true;
+                }
+                return false;
+            }
+        });
+
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT);
+        editText.setLayoutParams(lp);
+        alertDialog.setView(editText);
+
+        alertDialog.show();
+    }
 
     public void startGame() {
         params = new Parameters(turnLengthSeconds, numberWordsToWin, topic);
         Exchange.game = new Game(Exchange.teams, params);
         Exchange.game.start();
-        //Exchange.game = game;
+    }
+
+    private int formatNum(int value, int min, int max){
+        if(value < min){
+            return min;
+        }
+        if(value > max){
+            return max;
+        }
+        return value;
     }
 }
